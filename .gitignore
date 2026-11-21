@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+node_modules/
+dist/
+release/
+coding_bounds.html
+coding_bounds_v1_preview.html
+coding_bounds_seed.json
+coding_bounds_validation.txt
+coding_bounds_johnson_improvements.csv
+litsyn_import.csv
+brouwer_import.csv
+data/*.pending
+.test-output-*/

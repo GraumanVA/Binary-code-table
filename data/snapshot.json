@@ -1,0 +1,86 @@
+{
+  "metadata": {
+    "name": "A(n,d) Atlas",
+    "generated": "2026-11-21",
+    "scope": "unrestricted binary codes",
+    "disclaimer": "Imported sources only; not an exhaustive review of the literature.",
+    "litsyn": {
+      "date": "1999-11-24",
+      "records": 1014,
+      "source": "Archived Litsyn–Rains–Sloane table supplied by user, Wayback capture 2001-06-03"
+    },
+    "brouwer": {
+      "date": "2026-10-21",
+      "records": 161,
+      "url": "https://aeb.win.tue.nl/codes/binary-1.html"
+    }
+  },
+  "editorial_exclusions": [
+    {
+      "claim_id": "LIT-32-19",
+      "reason": "Erroneous lower bound 8 exceeds the binary Plotkin upper bound 6. Excluded before merging, parity extension, or shortening."
+    },
+    {
+      "claim_id": "LIT-35-21",
+      "reason": "Erroneous lower bound 8 exceeds the binary Plotkin upper bound 6. Excluded before merging, parity extension, or shortening."
+    }
+  ],
+  "code_types": {
+    "HG": "Hamming code",
+    "SW": "nonlinear single-error-correcting code",
+    "UV": "(u,u+v) construction",
+    "GO": "Golay code",
+    "LI": "linear code, explicit matrix",
+    "NL": "nonlinear code, explicit words",
+    "B": "BCH code",
+    "RM": "Reed–Muller code",
+    "HD": "Hadamard-matrix code",
+    "GP": "Goppa / lengthened Goppa code",
+    "Z4": "code derived from Z4-cyclic code",
+    "MT": "matrix construction",
+    "PR": "Preparata code",
+    "CM": "conference-matrix code",
+    "Y1": "shortening, j=1",
+    "Y2": "shortening, j=2",
+    "YB": "shortening of BCH codes",
+    "QR": "quadratic residue code"
+  },
+  "notes": {
+    "18,4": {
+      "lower": "Oscar Sanchez, Gray image of a Z4 code (email, 2026-10-17).",
+      "upper": "Tseng, Lai and Yu, split Terwilliger-algebra SDP (2023)."
+    },
+    "20,4": {
+      "lower": "Moshe Milshtein, Four New Single-Error-Correcting Binary Codes (arXiv:2610.23626, 2026-10-16).",
+      "upper": "W. Haas, On the Failing Cases of the Johnson Bound for Error-Correcting Codes (2008)."
+    },
+    "23,10": {
+      "lower": "Ota, Osa and Harada (arXiv:2610.11609, 2026-10-08).",
+      "upper": "Gijswijt, Mittelmann and Schrijver, quadruple-distance SDP (2012)."
+    },
+    "25,10": {
+      "lower": "Ota, Osa and Harada (arXiv:2610.11609, 2026-10-08).",
+      "upper": "Gijswijt, Mittelmann and Schrijver (2012)."
+    },
+    "26,12": {
+      "lower": "Ota, Osa and Harada (arXiv:2610.11609, 2026-10-08).",
+      "upper": "Gijswijt, Mittelmann and Schrijver (2012)."
+    },
+    "28,12": {
+      "lower": "Zhiyang Chen (email, 2026-10-21).",
+      "upper": "See Brouwer table and its references."
+    },
+    "21,6": {
+      "lower": "Zhiyang Chen (email, 2026-10-21).",
+      "upper": "See Brouwer table and its references."
+    },
+    "27,6": {
+      "lower": "Zhiyang Chen (email, 2026-10-21).",
+      "upper": "See Brouwer table and its references."
+    },
+    "28,6": {
+      "lower": "Zhiyang Chen (email, 2026-10-21).",
+      "upper": "See Brouwer table and its references."
+    }
+  }
+}

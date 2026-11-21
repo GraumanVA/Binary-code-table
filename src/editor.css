@@ -1,0 +1,24 @@
+.editor-shell { max-width: 1200px; padding-bottom: 40px; }
+.editor-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+.editor-section { min-width: 0; border-top: 1px solid var(--line); padding-top: 20px; }
+.editor-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
+.editor-section h2 { font-size: 1.125rem; font-weight: 600; margin: 0 0 16px; }
+.editor-section label { display: block; margin: 15px 0 5px; font-size: .875rem; font-weight: 500; }
+.editor-section input:not([type="checkbox"]), .editor-section textarea, .editor-section select { width: 100%; min-height: 38px; padding: 8px 10px; border: 1px solid #c6d0d9; border-radius: 5px; color: var(--ink); background: white; font: inherit; font-size: .875rem; }
+.editor-section textarea { resize: vertical; }
+.editor-section select[size] { min-height: 115px; }
+.editor-section select option { padding: 4px 2px; }
+.editor-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.editor-row > div { min-width: 0; }
+.editor-section .editor-check { display: flex; align-items: center; gap: 8px; margin: 18px 0; }
+.editor-check input { width: 16px; height: 16px; accent-color: var(--blue); }
+.editor-hint, .editor-feedback { font-size: .8125rem; color: var(--muted); overflow-wrap: anywhere; }
+.editor-feedback { min-height: 1.4em; }
+.editor-status { color: var(--muted); font-size: .875rem; }
+.editor-error { color: #a12c2c; }
+.editor-downloads { margin-top: 32px; }
+.editor-downloads > p { color: var(--muted); font-size: .875rem; }
+.editor-actions { display: flex; flex-wrap: wrap; gap: 10px; margin: 18px 0; }
+.editor-downloads details { margin: 18px 0; font-size: .875rem; }
+.editor-downloads code { overflow-wrap: anywhere; }
+@media (max-width: 760px) { .editor-grid { grid-template-columns: 1fr; gap: 28px; } }

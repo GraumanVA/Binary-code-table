@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A(n,d) table</title>
+<style>
+__STYLES__
+</style>
+</head>
+<body>
+<header>
+<div class="shell topbar">
+<a class="brand" href="#top" aria-label="Atlas home">A(n,d) table</a>
+<nav class="nav" aria-label="Main navigation">
+<a href="#browse">Table</a>
+<a href="#methods">Methods</a>
+<a href="#sources">Sources</a>
+<a href="#updates">Updates</a>
+</nav>
+</div>
+</header>
+<main class="shell" id="top">
+<p id="loadStatus" class="range-note" role="status">Loading bounds and references…</p>
+<button id="retryLoad" class="btn" hidden>Retry loading</button>
+<noscript>This table needs JavaScript to calculate and display bounds.</noscript>
+<p id="snapshotNotice" class="range-note" role="status" hidden>
+</p>
+<section class="hero" aria-labelledby="page-title">
+<p>Bounds on the largest binary code of length n and minimum Hamming distance at least d. Select a value to inspect its sources and derivation.</p>
+<p>The table includes lengths up to 512 and distances up to 31. We attempt to provide a complete table, but there are no guarantees. Updates and improvements are welcome.</p>
+<details class="coverage">
+<summary>Sources and coverage</summary>
+<p>The table combines the Litsyn–Rains–Sloane archived table, discontinued in 1999, Brouwer’s small-code table (October 2026), cited literature updates, and elementary bounds.</p>
+</details>
+</section>
+<section id="browse" aria-label="Browse parameter bounds">
+<div class="toolbar" aria-label="Table controls">
+<div class="ranges">
+<fieldset class="range">
+<legend>Length n</legend>
+<label class="sr-only" for="nStart">Length from</label>
+<input id="nStart" aria-describedby="rangeNote" type="number" min="1" max="512" step="1" value="14">
+<span aria-hidden="true">–</span>
+<label class="sr-only" for="nEnd">Length to</label>
+<input id="nEnd" aria-describedby="rangeNote" type="number" min="1" max="512" step="1" value="32">
+</fieldset>
+<fieldset class="range">
+<legend>Distance d</legend>
+<label class="sr-only" for="dStart">Distance from</label>
+<input id="dStart" aria-describedby="rangeNote" type="number" min="1" max="512" step="1" value="3">
+<span aria-hidden="true">–</span>
+<label class="sr-only" for="dEnd">Distance to</label>
+<input id="dEnd" aria-describedby="rangeNote" type="number" min="1" max="512" step="1" value="15">
+</fieldset>
+</div>
+<div class="toolbar-actions">
+<details class="options" id="options">
+<summary class="options-toggle">Options</summary>
+<div class="options-panel">
+<div class="control">
+<label for="parity">Distance columns</label>
+<select id="parity">
+<option value="odd" selected>Odd distances (default)</option>
+<option value="all">All distances</option>
+<option value="even">Even only</option>
+</select>
+</div>
+<fieldset class="checks">
+<legend>Include sources</legend>
+<label>
+<input id="litsyn" type="checkbox" checked> Litsyn 1999</label>
+<label>
+<input id="brouwer" type="checkbox" checked> Brouwer 2026</label>
+<label>
+<input id="literature" type="checkbox" checked> Literature updates</label>
+<label>
+<input id="theorems" type="checkbox" checked> Elementary bounds</label>
+</fieldset>
+</div>
+</details>
+<button class="btn" id="export">Export CSV</button>
+<button class="text-button" id="cancelExport" hidden>Cancel export</button>
+</div>
+</div>
+<p class="range-note" id="rangeNote" role="status" hidden>
+</p>
+<div id="exportActivity" hidden>
+<progress id="exportProgress" value="0" aria-label="CSV export progress">
+</progress>
+<span id="exportStatus" role="status">
+</span>
+</div>
+<div class="workspace" id="workspace">
+<div class="panel table-panel">
+<div class="matrix-meta">
+<span id="shown">Loading…</span>
+<span class="exact-key">Exact values</span>
+<span class="hint">Select a cell for details</span>
+</div>
+<div class="matrix-scroll" id="matrixScroll" role="region" tabindex="0" aria-label="Bounds table; scroll to browse">
+<table class="matrix" id="matrix" aria-label="Bounds on binary code size A(n,d)">
+</table>
+</div>
+<div class="legend">Scroll to browse the selected range. Large values are abbreviated, select a cell for the full integer.</div>
+</div>
+<aside class="panel detail" aria-label="Parameter details" id="detail" hidden>
+</aside>
+</div>
+</section>
+<section class="below">
+<article class="info" id="methods">
+<h2>Methods</h2>
+<p>The table shows the strongest bounds among the enabled sources and their documented parity and shortening consequences.</p>
+<details>
+<summary>How bounds are calculated</summary>
+<ul>
+<li>
+<strong>Archive rows:</strong> The format <span class="code-inline">n d k N Type Ref</span> gives <span class="code-inline">A(n,d) ≥ N·2^k</span>.</li>
+<li>
+<strong>Missing lengths:</strong> Shorten from the next eligible archived length, rounding the resulting lower bound upward to an integer.</li>
+<li>
+<strong>Parity:</strong> <span class="code-inline">A(n,2t−1) = A(n+1,2t)</span> relates odd and even distances. The table shows only odd distances by default to avoid duplication. Even-distance source bounds still contribute to their equivalent odd-distance entries.</li>
+<li>
+<strong>Merging:</strong> Take the largest lower bound and smallest upper bound. General bounds use Singleton, Hamming, Plotkin, and classical Johnson. Johnson uses a nested-floor constant-weight bound; even distances use the parity identity. Equivalent odd/even pairs share their strongest elementary upper bound. The smallest upper bound wins.</li>
+</ul>
+</details>
+
+</article>
+<article class="info" id="sources">
+<h2>Sources</h2>
+<p>
+<strong>Litsyn–Rains–Sloane, 1999.</strong> <em>Table of Nonlinear Binary Codes</em>. 1,014 archived source rows, lengths up to 512, and 108 bibliography entries.</p>
+<p>
+<strong>Brouwer, October 2026.</strong> <a href="https://aeb.win.tue.nl/codes/binary-1.html" target="_blank" rel="noopener noreferrer">Small binary codes</a>. 161 manually transcribed cells, lengths 6–28.</p>
+<details>
+<summary>Archive corrections and attribution</summary>
+<p>The erroneous Litsyn lower bounds at (32,19) and (35,21) are excluded from calculations, including parity and shortening. Each claims 8 codewords, exceeding the Plotkin upper bound of 6. The original archive rows are retained in the source data.</p>
+</details>
+</article>
+</section>
+
+<section>
+<article class="info" id="updates">
+<h2>Updates</h2>
+<p>
+News of table improvements will be posted here.
+</p>
+</article>
+</section>
+
+</main>
+<footer class="foot">
+<div class="shell">A(n,d) table · Unrestricted binary codes · <a href="./editor.html">Update table data</a> · <span id="datasetVersion"></span></div>
+</footer>
+<script id="seed" type="application/json">__SEED__</script>
+__WORKER__
+__SCRIPTS__
+</body>
+</html>

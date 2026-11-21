@@ -1,0 +1,1112 @@
+{
+  "allt76": {
+    "authors": [
+      "Alltop"
+    ],
+    "year": "1976",
+    "citation": "W. O. Alltop. Binary codes with improved minimum weights. {\\em IEEE Trans. Inform. Theory}, 22:241--243, 1976.",
+    "source_sha256": "6988e0d0cc60527d63bf86fa2590286728571eefc74058bab695b92f97a2306b"
+  },
+  "allt77": {
+    "authors": [
+      "Alltop"
+    ],
+    "year": "1977",
+    "citation": "W. O. Alltop. Personal Communication (see F.J. MacWilliams and N.J.A. Sloane, 1977), 1977.",
+    "source_sha256": "f23650a5f6367fad9f99536eda0e7705221d9e92a01930ee9177dfac0aed1083"
+  },
+  "allt84": {
+    "authors": [
+      "Alltop"
+    ],
+    "year": "1984",
+    "citation": "W. O. Alltop. A method for extending binary linear codes. {\\em IEEE Trans. Inform. Theory}, 30(6):871--872, 1984.",
+    "source_sha256": "ffdeaf1345cc6eb1cbd89f12a4595a88e3770315f1de60b4b53c2af5496af66d"
+  },
+  "aydi99": {
+    "authors": [
+      "Aydin"
+    ],
+    "year": "1999",
+    "citation": "N.Aydin. E-mail of November 7, 1999.",
+    "source_sha256": "31d9f28989d1e910d87a5bdca8c63b5e308665666c23908f9955b87c36d10139"
+  },
+  "barg87": {
+    "authors": [
+      "Barg",
+      "Katsman",
+      "Tsfasman"
+    ],
+    "year": "1987",
+    "citation": "A. Barg, G. Katsman, and M. Tsfasman. Algebraic geometric codes over curves of low genus. {\\em Problems of Information Transmission}, 23(1):34--38, 1987.",
+    "source_sha256": "6c940b234a3e2700587564637ff85a9121e8411b82d7d46d7707ced49d2d83ec"
+  },
+  "berl68": {
+    "authors": [
+      "Berlekamp"
+    ],
+    "year": "1968",
+    "citation": "E. R. Berlekamp. {\\em Algebraic Coding Theory}. McGraw-Hill, 1968.",
+    "source_sha256": "33da4b3ef8e40a2b9b48bfb78f2de3b9850040dec17149611ec9c8f43ade540d"
+  },
+  "best80": {
+    "authors": [
+      "Best"
+    ],
+    "year": "1980",
+    "citation": "M. R. Best. Binary codes with a minimum distance of four. {\\em IEEE Trans. Inform. Theory}, 26:738--742, 1980.",
+    "source_sha256": "ba9814a2cd25b852bc38f7c797ae2a115d5d84712f3dc00b3a2eabfdc3580813"
+  },
+  "best78b": {
+    "authors": [
+      "Best",
+      "Brouwer",
+      "MacWilliams",
+      "Odlyzko",
+      "Sloane"
+    ],
+    "year": "1978",
+    "citation": "M. R. Best, A. E. Brouwer, F. J. MacWilliams, A. M. Odlyzko and N. J. A. SLOANE. Bounds for binary codes of length less than 25. {\\em IEEE Trans. Inform. Theory}, 24:81--93, 1978.",
+    "source_sha256": "2d41381f75c355a61db8c73f9e20a33058138332a191ffc2ad418271c09244c2"
+  },
+  "bier95": {
+    "authors": [
+      "Bierbrauer",
+      "Edel"
+    ],
+    "year": "1995",
+    "citation": "J. Bierbrauer and Y. Edel. Personal Communication to A. E. Brouwer, 1994, 1995.",
+    "source_sha256": "2bb8612e2ad98ffe5b4359f42fc53cc5fe3964380afb390c551122bdf9ebe60a"
+  },
+  "bier97": {
+    "authors": [
+      "Bierbrauer",
+      "Edel"
+    ],
+    "year": "1997",
+    "citation": "J. Bierbrauer and Y. Edel. New code parameters from {R}eed-{S}olomon subfield subcodes. {\\em IEEE Trans. Inform. Theory}, 43(3):953--968, 1997.",
+    "source_sha256": "4d37d09cc9988104b366bd5cbf621543332602ea29244d6f98b277d134c06938"
+  },
+  "blok84": {
+    "authors": [
+      "Blokhuis",
+      "Lam"
+    ],
+    "year": "1984",
+    "citation": "A. Blokhuis and C. W. H. Lam. More coverings by rook domains. {\\em J. Combinatorial Th.}, Ser. A, 36:240--244, 1984.",
+    "source_sha256": "e6615fad4a8e7ff4d247a5d3940a903d87f78580cebc3183299a815e8d4cbed7"
+  },
+  "bose60": {
+    "authors": [
+      "Bose",
+      "Ray-Chaudhuri"
+    ],
+    "year": "1960",
+    "citation": "R. C. Bose and D. K. Ray-Chaudhuri. On a class of error-correcting binary group codes. {\\em Info. and Control}, 3:68--79, 1960.",
+    "source_sha256": "080e5ff24396919c0475ca2cbda21a2687f8dcfbeac885f54b3cc2fa23f36216"
+  },
+  "bouk95": {
+    "authors": [
+      "Boukliev"
+    ],
+    "year": "1995",
+    "citation": "I. Boukliev. A method for construction of good linear codes. {\\em Preprint}, 1995.",
+    "source_sha256": "ef2f5b7001a0d0d2b2bebcc1f4b48c8f09fe0fb198524384ef7f6e793307ea27"
+  },
+  "brou97": {
+    "authors": [
+      "Brouwer"
+    ],
+    "year": "1997",
+    "citation": "A. Brouwer. Personal Communication, 1997.",
+    "source_sha256": "0540f75defe70c2252f0f41eda5707312f2681f9dd0de22f720474a51ee5a202"
+  },
+  "brou93a": {
+    "authors": [
+      "Brouwer"
+    ],
+    "year": "1993",
+    "citation": "A. E. Brouwer. The linear programming bound for binary linear codes. {\\em IEEE Trans. Inform. Theory}, 39:677--680, 1993.",
+    "source_sha256": "e9bbe1cb835ada45543eb1155da9aacf6d4a6c8af5a750fe9f34db5bce4d2ffa"
+  },
+  "brou90": {
+    "authors": [
+      "Brouwer",
+      "Shearer",
+      "Sloane",
+      "Smith"
+    ],
+    "year": "1990",
+    "citation": "A. E. Brouwer, J. B. Shearer, N. J. A. Sloane and W. D. Smith. A new table of constant weight codes. {\\em IEEE Trans. Inform. Theory}, 36:1334--1380, 1990.",
+    "source_sha256": "a28a2a925f2046c1adabecf5b0a3ed01780e036798f2acbd03554104bc9105dd"
+  },
+  "brou93": {
+    "authors": [
+      "Brouwer",
+      "Verhoeff"
+    ],
+    "year": "1993",
+    "citation": "A. E. Brouwer and T. Verhoeff. An updated table of minimum-distance bounds for binary linear codes. {\\em IEEE Trans. Inform. Theory}, 39:662--677, 1993.",
+    "source_sha256": "1a2bd72c7b65c88760df3c6f58823d17b8fb979cfa49a8e62edd14663f5f943d"
+  },
+  "cace91": {
+    "authors": [
+      "Cáceres",
+      "Moreno"
+    ],
+    "year": "1991",
+    "citation": "A. C\\'aceres and O. Moreno. On the estimation of minimum distance of duals of {B}{C}{H} codes. {\\em Congressus Numerantium}, 81:205--208, 1991.",
+    "source_sha256": "20586d33c6c30c311340e64868b0ef3b773d6675cd93e2a655e233d01bc7b16e"
+  },
+  "cald94": {
+    "authors": [
+      "Calderbank",
+      "McGuire"
+    ],
+    "year": "1994",
+    "citation": "A. R. Calderbank and G. McGuire. Construction of a $(64,2^{37},12)$ code. {\\em Preprint}, 1994.",
+    "source_sha256": "befd6321df8b5f56084b40a9470b89cd10765bdecd40cecf1da190838d6d5ed8"
+  },
+  "cald96": {
+    "authors": [
+      "Calderbank",
+      "McGuire",
+      "Kumar",
+      "Helleseth"
+    ],
+    "year": "1996",
+    "citation": "A. R. Calderbank, G. McGuire, P. V. Kumar, and T. Helleseth. Cyclic codes over {Z}$_4$, locator polynomials, and {N}ewton identities. {\\em IEEE Trans. Inform. Theory}, 42(1):217--226, 1996.",
+    "source_sha256": "01f136f1201128f53b786d1e0333931d7021dfc9bac488b6c729d9f241e9a804"
+  },
+  "chen70": {
+    "authors": [
+      "Chen"
+    ],
+    "year": "1970",
+    "citation": "C.-L. Chen. Computer results on the minimum distance of some binary cyclic codes. {\\em IEEE Trans. Inform. Theory}, 16:359--360, 1970.",
+    "source_sha256": "01e37f6db8d05fb05c2eb3c5c3414015eefaa8091170cf32e3ee7520a63aa880"
+  },
+  "chen91": {
+    "authors": [
+      "Chen"
+    ],
+    "year": "1991",
+    "citation": "C. L. Chen. Construction of some binary linear codes of minimum distance five. {\\em IEEE Trans. Inform. Theory}, 37(5):1429--1432, 1991.",
+    "source_sha256": "b96531c96b4f82853bd541b7ea4461291a4a25677efe4e4c16a2fb51a48d533f"
+  },
+  "chen94": {
+    "authors": [
+      "Chen"
+    ],
+    "year": "1994",
+    "citation": "Z. Chen. Six new binary quasi-cyclic codes. {\\em IEEE Trans. Inform. Theory}, 40(5):1666--1667, 1994.",
+    "source_sha256": "ef17f60293c4e8fdd12de8fa8329c4a1c9bf3e917f43efbdc4039f85069d1ebc"
+  },
+  "chen87": {
+    "authors": [
+      "Cheng"
+    ],
+    "year": "1987",
+    "citation": "Y. Cheng. New linear codes constructed by concatenating, extending, and shortening methods. {\\em IEEE Trans. Inform. Theory}, 33(5):719--721, 1987.",
+    "source_sha256": "5be8d154fbf9d2d994e066c24472fcdaf78b9c9e3db8fea343eacc3fe5b03397"
+  },
+  "chen89": {
+    "authors": [
+      "Cheng",
+      "Sloane"
+    ],
+    "year": "1989",
+    "citation": "Y. Cheng and N. J. A. Sloane. Codes from symmetry groups, and a [32,17,8] code. {\\em SIAM J. Disc. Math.}, 2(1):28--37, 1989.",
+    "source_sha256": "3da3670b77ddbccb4f9aea9e9dc905fdfd29e25e925f182e6bdc15c460ab5c73"
+  },
+  "chie75": {
+    "authors": [
+      "Chien",
+      "Choy"
+    ],
+    "year": "1975",
+    "citation": "R. T. Chien and D. M. Choy. Algebraic generalization of {B}{C}{H}-{G}oppa-{H}elgert codes. {\\em IEEE Trans. Inform. Theory}, 21:70--79, 1975.",
+    "source_sha256": "1c1e855a8f5ad696348e9709014caa062ebc14812c1867485906a3b27a4c5e8e"
+  },
+  "cord67": {
+    "authors": [
+      "Cordaro",
+      "Wagner"
+    ],
+    "year": "1967",
+    "citation": "J. T. Cordaro and T. J. Wagner. Optimum $(n,2)$ codes for small values of of channel error probability. {\\em IEEE Trans. Inform. Theory}, 13:349--350, 1967.",
+    "source_sha256": "69bf5be1d752352fe1f56834198abd0acbcfa4bf5d086f04405cb4146aaefe1b"
+  },
+  "dels75": {
+    "authors": [
+      "Delsarte",
+      "Goethals"
+    ],
+    "year": "1975",
+    "citation": "P. Delsarte and J.-M. Goethals. Alternating bilinear forms over ${G}{F}(q)$. {\\em J. Combin. Theory}, 19A:25--50, 1975.",
+    "source_sha256": "b884d937e75b2b99cb0af75b67058b6dd41868b87b3cc33a977cc939bab96eeb"
+  },
+  "dodu87": {
+    "authors": [
+      "Dodunekov",
+      "Helleseth",
+      "Manev",
+      "Ytrehus"
+    ],
+    "year": "1987",
+    "citation": "S. M. Dodunekov, T. Helleseth, N. Manev, and O. Ytrehus. New bounds on binary linear codes of dimension eight. {\\em IEEE Trans. Inform. Theory}, 33(6):917--919, 1987.",
+    "source_sha256": "36495fc7fb03ffb3e06e747d44ee696b077ebdff87bb8b0d09214f98285f72c6"
+  },
+  "doug91": {
+    "authors": [
+      "Dougherty",
+      "Janwa"
+    ],
+    "year": "1991",
+    "citation": "R. Dougherty and H. Janwa. Covering radius computations for binary cyclic codes. {\\em Math. Computation}, 57(195):415--434, 1991.",
+    "source_sha256": "27e36b70edbcc5524cbd076d22e4d034d99e7188d46d62f1b2710cd36784a2c2"
+  },
+  "etzi00": {
+    "authors": [
+      "Etzion"
+    ],
+    "year": "1992",
+    "citation": "T. Etzion. Personal Communication, 1992.",
+    "source_sha256": "914e092ddce92afd12b109a24a6b7fd27d799c9dc13bef3330eb0cc3e9708bad"
+  },
+  "fark94": {
+    "authors": [
+      "Farkas",
+      "Bruhl"
+    ],
+    "year": "1994",
+    "citation": "P. Farkas and K. Bruhl. Three best binary linear block codes of minimum distance fifteen. {\\em IEEE Trans. Inform. Theory}, 40(3):949--951, 1994.",
+    "source_sha256": "9b19bee3a3a1ae0c8a113442ee27570085ff7d8b287bb25fb12cf84f76af2fa6"
+  },
+  "goet74": {
+    "authors": [
+      "Goethals"
+    ],
+    "year": "1974",
+    "citation": "J. M. Goethals. Two dual families of nonlinear binary codes. {\\em Electronic Letters}, 10:471--472, 1974.",
+    "source_sha256": "8bdfed87d88e6e17c0f3a1a5edc93a6da26580ca152835617923dd963bd0d4ac"
+  },
+  "gola49": {
+    "authors": [
+      "Golay"
+    ],
+    "year": "1949",
+    "citation": "M. J. E. Golay. Notes on digital coding. {\\em Proc. IEEE}, 37:657, 1949.",
+    "source_sha256": "52c33fc3c5b55351f18bfbe83d8026d359798b12a0ba2e4518ce93cc375b0bf0"
+  },
+  "gold68": {
+    "authors": [
+      "Goldman",
+      "Kliman",
+      "Smola"
+    ],
+    "year": "1968",
+    "citation": "H. D. Goldman, M. Kliman, and H. Smola. The weight structure of some {B}ose-{C}haudhuri codes. {\\em IEEE Trans. Inform. Theory}, 14:167--169, 1968.",
+    "source_sha256": "12e6e593fcce3da76a9dd47c89ca883495b6139f5ddefa8b22e3c57d99b74b5f"
+  },
+  "gopp70": {
+    "authors": [
+      "Goppa"
+    ],
+    "year": "1970",
+    "citation": "V. Goppa. A new class of linear error-correcting codes. {\\em Problems of Information Transmission}, 6(3):24--30, 1970.",
+    "source_sha256": "ef5df89f205a91c4baba4ea2d61ced704aa9bab60b539708cf34c4edbffbb550"
+  },
+  "gron94": {
+    "authors": [
+      "Groneick",
+      "Grosse"
+    ],
+    "year": "1994",
+    "citation": "B. Groneick and S. Grosse. New binary codes. {\\em IEEE Trans. Inform. Theory}, 40(2):510--512, 1994.",
+    "source_sha256": "a9618a7f96972739f8f3d79b2d285bc87e16e8c0abe286c601682b844b7860a1"
+  },
+  "gron92": {
+    "authors": [
+      "Groneick",
+      "Grosse"
+    ],
+    "year": "1992–1995",
+    "citation": "B. Groneick and S.Grosse. Personal Communication to A. E. Brouwer, 1992-1995.",
+    "source_sha256": "a0beb5a30b188a708f1d07834a3a82ecf4ebde9af86a5a1dd0288900f9fc8755"
+  },
+  "gull94": {
+    "authors": [
+      "Gulliver"
+    ],
+    "year": "1993",
+    "citation": "T. A. Gulliver. Personal Communication (see A. E. Brouwer and T. Verhoeff, 1993), 1993.",
+    "source_sha256": "36d7bd1d7758b156862709dec8ca0751f4c2a8f2804f3f007003f9c29fa4264a"
+  },
+  "gull97": {
+    "authors": [
+      "Gulliver",
+      "Bhargava"
+    ],
+    "year": "1997",
+    "citation": "T. A. Gulliver and V. K. Bhargava. New optimal binary linear codes of dimensions 9 and 10. {\\em IEEE Trans. Inform. Theory}, 43:314--316, 1997.",
+    "source_sha256": "6a98c52f554d02a2c0d92dca5cd30a5c6e59449a597fe5642c796c85a74dc4ce"
+  },
+  "hama88": {
+    "authors": [
+      "Hämäläinen"
+    ],
+    "year": "1988",
+    "citation": "H. H\\\"{a}m\\\"{a}lainen. Two new binary codes with minimum distance three. {\\em IEEE Trans. Inform. Theory}, 34(4):875, 1988.",
+    "source_sha256": "1698f70df5f02b33f23804dee154bb82476d642801da111b641259606a0e32aa"
+  },
+  "hamm50": {
+    "authors": [
+      "Hamming"
+    ],
+    "year": "1950",
+    "citation": "R. W. Hamming. Error-detecting and error-correcting codes. {\\em Bell. Syst. Tech. J.}, 29:147--160, 1950.",
+    "source_sha256": "80dc6584eb4b7390131640b77a9a2d70b06661c46aaa019d26b4a0668c648aa6"
+  },
+  "hamm94": {
+    "authors": [
+      "Hammons",
+      "Kumar",
+      "Calderbank",
+      "Sloane",
+      "Solé"
+    ],
+    "year": "1994",
+    "citation": "A. R. Hammons, Jr., P. V. Kumar, A. R. Calderbank, N. J. A. Sloane and P. Sol\\'{e}. The $Z_4$-linearity of Kerdock, Preparata, Goethals and related codes. {\\em IEEE Trans. Inform. Theory}, 40:301-319, 1994.",
+    "source_sha256": "da3acea731429292125f4076525e75d3955dcf1159a46933bcebb5eab328332f"
+  },
+  "hart73": {
+    "authors": [
+      "Hartman",
+      "Tzeng"
+    ],
+    "year": "1973",
+    "citation": "C. R. P. Hartman and K. K. Tzeng. On some classes of cyclic codes of composite lengths. {\\em IEEE Trans. Inform. Theory}, 19:820--822, 1973.",
+    "source_sha256": "0cc649a0cdac2250461de736eab17addf2eeb003b31e5cd769b2cc9ca76f9ede"
+  },
+  "hash76": {
+    "authors": [
+      "Hashim",
+      "Pozdniakov"
+    ],
+    "year": "1976",
+    "citation": "A. A. Hashim and V. S. Pozdniakov. Computerised search for linear binary codes. {\\em Electronic Letters}, 12:350--351, 1976.",
+    "source_sha256": "f95fc352eeba0fc78aa9f8fc71def3f9810da49b4287d903e874f40d2d87140e"
+  },
+  "helg72": {
+    "authors": [
+      "Helgert"
+    ],
+    "year": "1972",
+    "citation": "H. J. Helgert. Srivastava codes. {\\em IEEE Trans. Inform. Theory}, 18:292--297, 1972.",
+    "source_sha256": "fff19747bd86274ffaa714d5e348d87cab17eb49dd02f8d7b53af4095897ccdf"
+  },
+  "helg74": {
+    "authors": [
+      "Helgert"
+    ],
+    "year": "1974",
+    "citation": "H. J. Helgert. Alternant codes. {\\em Info. and Control}, 26:369--380, 1974.",
+    "source_sha256": "5439993f7078ef7f13cc55a68ee3c33c3e1cd6234b430b7035357681674702ed"
+  },
+  "helg73a": {
+    "authors": [
+      "Helgert",
+      "Stinaff"
+    ],
+    "year": "1973",
+    "citation": "H. J. Helgert and R. D. Stinaff. Minimum-distance bounds for binary linear codes. {\\em IEEE Trans. Inform. Theory}, 19:344--356, 1973.",
+    "source_sha256": "7684e6b81cbe4ffecc73fa024fefd300340c00f8ae8da5d6a017ecd18fb55745"
+  },
+  "helg73b": {
+    "authors": [
+      "Helgert",
+      "Stinaff"
+    ],
+    "year": "1973",
+    "citation": "H. J. Helgert and R. D. Stinaff. Shortened {B}{C}{H} codes. {\\em IEEE Trans. Inform. Theory}, 19:818--820, 1973.",
+    "source_sha256": "b70d8635b30c395333c4bcefeabf47c01905014c150772cb9d2f20a66b055197"
+  },
+  "hell89": {
+    "authors": [
+      "Helleseth",
+      "Ytrehus"
+    ],
+    "year": "1989",
+    "citation": "T. Helleseth and O. Ytrehus. How to find a [33,18,4] code. Technical report, Department of Informatics, University of Bergen, Norway, 1989.",
+    "source_sha256": "33c4a0259ce755780f199778b54a1970f865453b01159a7e411d72f898a134f4"
+  },
+  "hoqu59": {
+    "authors": [
+      "Hocquenghem"
+    ],
+    "year": "1959",
+    "citation": "A. Hocquenghem. Codes correcteurs d'erreurs. {\\em Chiffres}, 2:147--156, 1959.",
+    "source_sha256": "e444229dff69878cf8575dde2e59f76d421f387bcbd9ca2e3f693cb72ae2d4bc"
+  },
+  "jens85": {
+    "authors": [
+      "Jensen"
+    ],
+    "year": "1985",
+    "citation": "J. M. Jensen. The concatenated structure of cyclic and abelian codes. {\\em IEEE Trans. Inform. Theory}, 31(6):788--793, 1985.",
+    "source_sha256": "cf8cc05528832d97c73335f3e8d0f54f0777dc6ad88381669308c65217f526df"
+  },
+  "juli65": {
+    "authors": [
+      "Julin"
+    ],
+    "year": "1965",
+    "citation": "D. Julin. Two improved block codes. {\\em IEEE Trans. Inform. Theory}, 11:459, 1965.",
+    "source_sha256": "8793b758d9c56083de17a9c70274345c191a1507cc489858367ff41ee1e8fbba"
+  },
+  "kaba88": {
+    "authors": [
+      "Kabatyansky",
+      "Panchenko"
+    ],
+    "year": "1988",
+    "citation": "G. Kabatyansky and V. Panchenko. Packings and coverings of the {H}amming space by spheres of radius one. {\\em Problems of Information Transmission}, 24(4):3--16, 1988.",
+    "source_sha256": "b608504dea04638f5c2d0e61b9433074f0fd7fcb67d8477a74a269e6436661e4"
+  },
+  "kaik97": {
+    "authors": [
+      "Kaikkonen"
+    ],
+    "year": "1997",
+    "citation": "M. Kaikkonen. Codes from affine permutation groups. {\\em Preprint}, 1997.",
+    "source_sha256": "bd59a556635ec7383273c881b69a5cecf5992e4e3d5ff7f3c56ae82e6451412c"
+  },
+  "kaik89": {
+    "authors": [
+      "Kaikkonen"
+    ],
+    "year": "1989",
+    "citation": "M. K. Kaikkonen. A new four-error-correcting code of length 20. {\\em IEEE Trans. Inform. Theory}, 35(6):1344, 1989.",
+    "source_sha256": "45e5725ae0501cb9cb1290c7746c0556b4ef7dfce17affcaedaf063d92b4ac1d"
+  },
+  "karl69": {
+    "authors": [
+      "Karlin"
+    ],
+    "year": "1969",
+    "citation": "M. Karlin. New binary coding results by circulants. {\\em IEEE Trans. Inform. Theory}, 15:81--92, 1969.",
+    "source_sha256": "fd5eb88f85da0b74dcceef5ab0a6837decfa25260e7c44c7610c453fd8ca30cb"
+  },
+  "kasa75": {
+    "authors": [
+      "Kasahara",
+      "Sugiyama",
+      "Hirasawa",
+      "Namekawa"
+    ],
+    "year": "1975",
+    "citation": "M. Kasahara, Y. Sugiyama, S. Hirasawa, and T. Namekawa. A new class of binary codes constructed on the basis of {B}{C}{H} codes. {\\em IEEE Trans. Inform. Theory}, 21:582--585, 1975.",
+    "source_sha256": "a1347b12fb0c2f1dbc8c90c531813ab2aff4b8e39d1b7e13373281fa26425612"
+  },
+  "kasa76": {
+    "authors": [
+      "Kasahara",
+      "Sugiyama",
+      "Hirasawa",
+      "Namekawa"
+    ],
+    "year": "1976",
+    "citation": "M. Kasahara, Y. Sugiyama, S. Hirasawa, and T. Namekawa. New classes of binary codes constructed on the basis of concatenated codes and product codes. {\\em IEEE Trans. Inform. Theory}, 22:462--468, 1976.",
+    "source_sha256": "5a05306b90b3f03cd3db5604810728e47015a1131368dbeb1ba47e07ed27ebf7"
+  },
+  "kasa69": {
+    "authors": [
+      "Kasami",
+      "Tokura"
+    ],
+    "year": "1969",
+    "citation": "T. Kasami and N. Tokura. Some remarks on {B}{C}{H} bounds and minimum weights of binary primitive {B}{C}{H} codes. {\\em IEEE Trans. Inform. Theory}, 15:408--413, 1969.",
+    "source_sha256": "59936049e0f0c7d172e7dabf26105d8ea9a95be3c5cad5ab2405d2663da45512"
+  },
+  "kats87": {
+    "authors": [
+      "Katsman",
+      "Kovalev",
+      "Litsyn"
+    ],
+    "year": "1987",
+    "citation": "G. Katsman, S. Kovalev, and S. Litsyn. New codes derived by lengthening. In {\\em Error-Correcting Coding and Reliability of Computers}, pages 7--10. Nauka, 1987. (In Russian).",
+    "source_sha256": "e30e30450803b2d102eba274ed25cf6cdb7a15121b87e1d81062e4140b534be9"
+  },
+  "kerd72": {
+    "authors": [
+      "Kerdock"
+    ],
+    "year": "1972",
+    "citation": "A. M. Kerdock. A class of low rate nonlinear codes. {\\em Info. and Control}, 20:182--187, 1972.",
+    "source_sha256": "3ef63a47729f5f425f22cd115254b8d177c333dbacf00862fbf0782484c22b00"
+  },
+  "klei95": {
+    "authors": [
+      "Klein",
+      "Litsyn",
+      "Vardy"
+    ],
+    "year": "1995",
+    "citation": "Y. Klein, S. Litsyn and A. Vardy. Two new bounds on the size of binary codes with a minimum distance of three. {\\em Designs, Codes and Cryptography}, 6:219--227, 1995.",
+    "source_sha256": "38d9ad20079ab024536e75cbef33e27d57d60cdaedfd4d2d7da59bbdd77c1bb9"
+  },
+  "krac83a": {
+    "authors": [
+      "Krachkovsky"
+    ],
+    "year": "1983",
+    "citation": "V. Krachkovsky. {\\em Design of Composite Methods of Error Protection and Their Application in Systems of Information Transmission}. PhD thesis, Institute of Aviation Equipment, Leningrad, 1983.",
+    "source_sha256": "767b85612726faee89e6cd80d43ab251b55f652fbeaf9f7353b75bd286bd6e60"
+  },
+  "krac83b": {
+    "authors": [
+      "Krachkovsky"
+    ],
+    "year": "1983",
+    "citation": "V. Krachkovsky. Two methods of decyclic lengthening. {\\em Problems of Information Transmission}, 19(2):14--22, 1983.",
+    "source_sha256": "3f79d151f215e52805881f7216470cbaec22eda561d928178f880d950eaae002"
+  },
+  "kupp95": {
+    "authors": [
+      "Kuppens"
+    ],
+    "year": "1995",
+    "citation": "P.W. Kuppens. Personal Communication to A. E. Brouwer, 1995.",
+    "source_sha256": "93436dce0c9bed6cbfafb5aa0e8c6bfd6598dc7059d17134c49829ac689bc713"
+  },
+  "leve61": {
+    "authors": [
+      "Levenshtein"
+    ],
+    "year": "1961",
+    "citation": "V. Levenshtein. Application of {H}adamard matrices to one problem of coding theory. {\\em Problemy Kibernetiki}, 5:123--136, 1961.",
+    "source_sha256": "4216834d95e9cc3aec0b281fff8af5ea49ab35a67c611cf2311bbe2b932c5a84"
+  },
+  "lits98": {
+    "authors": [
+      "Litsyn"
+    ],
+    "year": "1998",
+    "citation": "Tables of Best Known Binary Codes, in Handbook of Coding Theory, (edited V. Pless et al., North-Holland, 1998, to appear).",
+    "source_sha256": "14ce83b4348e9a32193e91ba3f70bd2e4e85e290f69f72f2fff2e84337ff418c"
+  },
+  "lits94b": {
+    "authors": [
+      "Litsyn",
+      "Vardy"
+    ],
+    "year": "1994",
+    "citation": "S. Litsyn and A. Vardy. The uniqueness of the Best code. {\\em IEEE Trans. Inform. Theory}, 40:1693--1698, 1994.",
+    "source_sha256": "017a07f689135819d4336aed4c7f72ee0b19367cd35f43599673710180e64af7"
+  },
+  "loel84": {
+    "authors": [
+      "Loeloeian",
+      "Conan"
+    ],
+    "year": "1984",
+    "citation": "M. Loeloeian and J. Conan. A [55,16,19] binary {G}oppa code. {\\em IEEE Trans. Inform. Theory}, 30(5):773, 1984.",
+    "source_sha256": "a5e0805c384bcf94b7d8093dc520a63db0fde671c0ab0d8af78baf36a01387a5"
+  },
+  "macw77": {
+    "authors": [
+      "MacWilliams",
+      "Sloane"
+    ],
+    "year": "1977",
+    "citation": "F. J. MacWilliams and N. J. A. Sloane. {\\em The Theory of Error-Correcting Codes}. North-Holland, Amsterdam, 1977.",
+    "source_sha256": "a037adf1a4c138f3daff063548552d7a881f019f1e729377231d31d037c0177f"
+  },
+  "mori93": {
+    "authors": [
+      "Morii"
+    ],
+    "year": "1993",
+    "citation": "M. Morii. Personal Communication to A. E. Brouwer, 1993.",
+    "source_sha256": "e5f21041281545c9c86cc55567b148d23e4e8b28b6a3289f1a0e4b8271355056"
+  },
+  "mori94": {
+    "authors": [
+      "Morii",
+      "Yoshimura"
+    ],
+    "year": "1993, 1994",
+    "citation": "M. Morii and T. Yoshimura. Personal Communication to A. E. Brouwer, 1993, 1994.",
+    "source_sha256": "eb3e64126ba69512a61f9c1180255c25da8322461fad7007d68723d19664611b"
+  },
+  "mull54": {
+    "authors": [
+      "Muller"
+    ],
+    "year": "1954",
+    "citation": "D. E. Muller. Application of {B}oolean algebra to switching circuit design and to error detection. {\\em IEEE Trans. on Computers}, 3:6--12, 1954.",
+    "source_sha256": "e119f328f42975815da2a5ae15d8c76679d06f3884b0c967ae5e6a0e8da8f81a"
+  },
+  "nord67": {
+    "authors": [
+      "Nordstrom",
+      "Robinson"
+    ],
+    "year": "1967",
+    "citation": "A. W. Nordstrom and J. P. Robinson. An optimum nonlinear code. {\\em Information and Control}, 11:613--616, 1967.",
+    "source_sha256": "c0ecd5a7e3d7e676dfe6c0d885da9d6d246af2cb4c9755b8fc6723c56e9246d1"
+  },
+  "oste96": {
+    "authors": [
+      "Östergård",
+      "Kaikkonen"
+    ],
+    "year": "1995",
+    "citation": "P. R. J. \\O sterg\\aa rd and M. K. Kaikkonen. New single-error correcting codes. {\\em Preprint}, 1995.",
+    "source_sha256": "4f9e4487e440f2bf730efd65bab22db899eecdb2f8b2ec6471c6b60697eeded8"
+  },
+  "pire74": {
+    "authors": [
+      "Piret"
+    ],
+    "year": "1974",
+    "citation": "P. Piret. Good block codes derived from cyclic codes. {\\em Electronic Letters}, 10:391--392, 1974.",
+    "source_sha256": "4d060793d509fa546651d064f23aafa13877801bbe6b0d946a9ffe37b0f622c4"
+  },
+  "pire80": {
+    "authors": [
+      "Piret"
+    ],
+    "year": "1980",
+    "citation": "P. Piret. Good block codes of length 27 and 28. {\\em IEEE Trans. Inform. Theory}, 26:227, 1980.",
+    "source_sha256": "94778268ae128ea1e3d45485f4b4f2adec8bdde1651ea6b3dd15c188e9256082"
+  },
+  "ples95": {
+    "authors": [
+      "Pless",
+      "Qian"
+    ],
+    "year": "1996",
+    "citation": "V. Pless and Z. Qian. Cyclic codes and quadratic residue codes over {Z}$_4$. {\\em IEEE Trans. Inform. Theory}, 42(5):1594--1600, 1996.",
+    "source_sha256": "9dc6c72c039517f56227340337ccc18676bb15010b3ff326675673e713132dbd"
+  },
+  "plot60": {
+    "authors": [
+      "Plotkin"
+    ],
+    "year": "1960",
+    "citation": "M. Plotkin. Binary codes with specified minimum distances. {\\em IEEE Trans. Inform. Theory}, 6:445--450, 1960.",
+    "source_sha256": "ce28aa0d57ba07bcd93f16571c83740921bd0ffedba92cad754c1c9200888510"
+  },
+  "prep68": {
+    "authors": [
+      "Preparata"
+    ],
+    "year": "1968",
+    "citation": "F. P. Preparata. A class of optimum nonlinear double-error-correcting codes. {\\em Info. and Control}, 13:378--400, 1968.",
+    "source_sha256": "e72d9570cdb41baa70f90be2536f66c350165e012d94e2ab2ff1ada5dc266330"
+  },
+  "prom78": {
+    "authors": [
+      "Promhouse",
+      "Tavares"
+    ],
+    "year": "1978",
+    "citation": "G. Promhouse and S. E. Tavares. The minimum distance of all binary cyclic codes of odd lengths from 66 to 99. {\\em IEEE Trans. Inform. Theory}, 24:438--442, 1978.",
+    "source_sha256": "bbedcf4232d1954e277a316b6765dcab2b1fcca35b481f709df4c8b7682b6f4c"
+  },
+  "pul82": {
+    "authors": [
+      "van Pul"
+    ],
+    "year": "1982",
+    "citation": "C. L. M. van PUL. On bounds on codes. {\\em Master's Thesis}, Eindhoven University of Technology, the Netherlands, 99 pp., 1982.",
+    "source_sha256": "57b6228c9b32dfe3f007a2d1ad41125b8bc09aefda6a24b68a9a7ecf046ecd6b"
+  },
+  "rodi": {
+    "authors": [
+      "Rodier"
+    ],
+    "year": "1992",
+    "citation": "F. Rodier. On the spectra of the duals of binary {B}{C}{H} codes of designed distance $\\delta=9$. {\\em IEEE Trans. Inform. Theory}, 38(2):478--479, 1992.",
+    "source_sha256": "55b10bee3def8dfbb88c82942122a3e6cf9b04f9a8910590c640bc7b5d76d51c"
+  },
+  "roel82": {
+    "authors": [
+      "Roelofsen"
+    ],
+    "year": "1982",
+    "citation": "G. Roelofsen. {\\em On {G}oppa and Generalized {S}rivastava Codes}. PhD thesis, Dept. Math. and Comp. Sci., Eindhoven Univ. of Technology, the Netherlands, 1982.",
+    "source_sha256": "faed94b7e6ba1aa0313a14035836bfca20f95a36f8a8c5bc1170b9740d062560"
+  },
+  "roma83": {
+    "authors": [
+      "Romanov"
+    ],
+    "year": "1983",
+    "citation": "A. Romanov. New binary codes with minimal distance 3. {\\em Problems of Information Transmission}, 19(3):101--102, 1983.",
+    "source_sha256": "e0b20785666642256f4294afe114163435bfea3754364d3ae8da1c5e24d425bc"
+  },
+  "scho92": {
+    "authors": [
+      "Schomaker",
+      "Wirtz"
+    ],
+    "year": "1992",
+    "citation": "D. Schomaker and M. Wirtz. On binary cyclic codes of length from 101 to 127. {\\em IEEE Trans. Inform. Theory}, 38(3):516--518, 1992.",
+    "source_sha256": "e5e5f0e887618d11e187006ecb1bf92f8592127d0689b129dd9e43d93ed148a5"
+  },
+  "sema73": {
+    "authors": [
+      "Semakov",
+      "Zinoviev",
+      "Zaitsev"
+    ],
+    "year": "1973",
+    "citation": "N. Semakov, V. Zinoviev, and G. Zaitsev. Interrelation of {P}reparata and {H}amming codes and extension of {H}amming codes to new double-error-correcting codes. In {\\em Proc. 2nd Internat. Sympos. Inform. Theory, Tsakhadsor, Armenia, 1971}, Budapest, 1973. Acad. Kiado.",
+    "source_sha256": "33318598aee0914a815329a1f121b72af193d7a5a245994d6c7411328be841f7"
+  },
+  "shea": {
+    "authors": [
+      "Shearer"
+    ],
+    "year": "1988, 1992",
+    "citation": "J. B. Shearer. Personal Communication (see A. E. Brouwer and T. Verhoeff, 1993), 1988, 1992.",
+    "source_sha256": "fb4acf6f303160f5d8cee07e6774cdf75b43e1eb625175caa52b0f2032a52c98"
+  },
+  "shek89": {
+    "authors": [
+      "Shekhunova",
+      "Bezzateev",
+      "Mironchikov"
+    ],
+    "year": "1989",
+    "citation": "N. Shekhunova, S. Bezzateev, and E. Mironchikov. A subclass of binary {G}oppa codes. {\\em Problems of Information Transmission}, 25(3):98--102, 1989.",
+    "source_sha256": "4ad7fb01c7e8de85afb27dbadc5dc624af466758a7e73708150c49a52cf14e2a"
+  },
+  "sloa72b": {
+    "authors": [
+      "Sloane"
+    ],
+    "year": "1972",
+    "citation": "N. J. A. Sloane. A survey of constructive coding theory and a table of binary codes of highest known rate. {\\em Discrete Mathematics}, 3:265--294, 1972.",
+    "source_sha256": "f11cc820e262574fcef802e4004aadadc18a64fc8dabdc01939e4f6cb6f6555b"
+  },
+  "sloa72a": {
+    "authors": [
+      "Sloane",
+      "Reddy",
+      "Chen"
+    ],
+    "year": "1972",
+    "citation": "N. J. A. Sloane, S. M. Reddy, and C. L. Chen. New binary codes. {\\em IEEE Trans. Inform. Theory}, 18:503--510, 1972.",
+    "source_sha256": "f7b8ad26c8033849cbea082f72f05afdf663bc2e89d72ee968b1d1bf137ffc63"
+  },
+  "sloa70b": {
+    "authors": [
+      "Sloane",
+      "Seidel"
+    ],
+    "year": "1970",
+    "citation": "N. J. A. Sloane and J. J. Seidel. A new family of nonlinear codes obtained from conference matrices. {\\em Annals N.Y. Acad. Sci.}, 175:363--365, 1970.",
+    "source_sha256": "a750a96ad7052e659af5b88d9cea391016708794acd5fea0cfb4c835b1173ee4"
+  },
+  "sloa70a": {
+    "authors": [
+      "Sloane",
+      "Whitehead"
+    ],
+    "year": "1970",
+    "citation": "N. J. A. Sloane and D. S. Whitehead. A new family of single-error correcting codes. {\\em IEEE Trans. Inform. Theory}, 16:717--719, 1970.",
+    "source_sha256": "15690afa414052661fcae71174350a2b97f09fdebbf57dc846c79a91323e1971"
+  },
+  "sugi76": {
+    "authors": [
+      "Sugiyama",
+      "Kasahara",
+      "Hirasawa",
+      "Namekawa"
+    ],
+    "year": "1976",
+    "citation": "Y. Sugiyama, M. Kasahara, S. Hirasawa, and T. Namekawa. Further results on {G}oppa codes and their applications to constructing efficient binary codes. {\\em IEEE Trans. Inform. Theory}, 22:518--526, 1976.",
+    "source_sha256": "3422dae0e13034586b1cf2573ceb07fd749483be05fe6ec7c80fed86e29474b0"
+  },
+  "tolh86": {
+    "authors": [
+      "Tolhuizen"
+    ],
+    "year": "1987",
+    "citation": "L. M. G. M. Tolhuizen. New binary linear block codes. {\\em IEEE Trans. Inform. Theory}, 33(5):727--729, 1987.",
+    "source_sha256": "8a40bef5aa920e19e8b3fe01e0bdf2aa901a6c3c6393f8d741b79d1b505bc475"
+  },
+  "tilb81": {
+    "authors": [
+      "van Tilborg"
+    ],
+    "year": "1981",
+    "citation": "H. C. A. van Tilborg. The smallest length of binary 7-dimensional linear codes with prescribed minimum distance. {\\em Discrete Mathematics}, 33:197--207, 1981.",
+    "source_sha256": "716a68f4fa8789688b334edc9e3b0e2207b410c1408a5f5d1780800eac226401"
+  },
+  "verh87": {
+    "authors": [
+      "Verhoeff"
+    ],
+    "year": "1987",
+    "citation": "T. Verhoeff. An updated table of minimum-distance bounds for binary linear codes. {\\em IEEE Trans. Inform. Theory}, 33(5):665--680, 1987.",
+    "source_sha256": "c1429af79d4d1c8d5e73383a6324b27ed72bf5d6d90fae89066df5129000b6bd"
+  },
+  "wagn66": {
+    "authors": [
+      "Wagner"
+    ],
+    "year": "1966",
+    "citation": "T. J. Wagner. A search technique for quasi-perfect codes. {\\em Info. and Control}, 9:94--99, 1966.",
+    "source_sha256": "af9f53289f2ef08b5c76cac13f37c2d7c68c4d6e40684ceab19d3f10bf508d64"
+  },
+  "weij97": {
+    "authors": [
+      "Weijs"
+    ],
+    "year": "1997",
+    "citation": "S. Weijs. PhD thesis, Dept. Math. and Comp. Sci., Eindhoven Univ. of Technology, the Netherlands, 1997.",
+    "source_sha256": "4226d27660ceda6d8d2805614b1efcf64b1c944f1aa83a96a2f9829987fddacd"
+  },
+  "wise83": {
+    "authors": [
+      "Wiseman"
+    ],
+    "year": "1983",
+    "citation": "J. Wiseman. New binary codes constructed by an old technique. {\\em IEEE Trans. Inform. Theory}, 29(6):936--937, 1983.",
+    "source_sha256": "b1f43335ddd81c49fcb002d97fde6d748a6e670882dfd0ce668a90e53fe0f729"
+  },
+  "zhi93": {
+    "authors": [
+      "Chen Zhi"
+    ],
+    "year": "1993",
+    "citation": "Chen Zhi. Personal Communication to A. E. Brouwer, 1993.",
+    "source_sha256": "15cb8fcb58e1243fdbed39829ab03b22659cea6ba5ea9356aab7d2f45710f5f0"
+  },
+  "zino76": {
+    "authors": [
+      "Zinoviev"
+    ],
+    "year": "1976",
+    "citation": "V. Zinoviev. Generalized cascade codes. {\\em Problems of Information Transmission}, 12(1):5--15, 1976.",
+    "source_sha256": "a1a4f29dcf1ef5ca1c5dcdc7fd608d50251df9cb03204cd920ea1f5fadfc28f8"
+  },
+  "zino82": {
+    "authors": [
+      "Zinoviev",
+      "Litsyn"
+    ],
+    "year": "1982",
+    "citation": "V. Zinoviev and S. Litsyn. On methods of codes lengthening. {\\em Problems of Information Transmission}, 18(4):29--42, 1982.",
+    "source_sha256": "c9c3ba70c9374cd3d25f4955186cd84444b1c81a91a36a9ac8ed2b8a0c6ac156"
+  },
+  "zino84b": {
+    "authors": [
+      "Zinoviev",
+      "Litsyn"
+    ],
+    "year": "1984",
+    "citation": "V. Zinoviev and S. Litsyn. On a general method of increasing the length of codes. {\\em Problems of Control and Information Theory}, 13(2):79--87, 1984.",
+    "source_sha256": "ea8b4ba0a664e8fb164045b3c30403353cb102b61c12d8f9b8ea7d647dc88b25"
+  },
+  "zino84a": {
+    "authors": [
+      "Zinoviev",
+      "Litsyn"
+    ],
+    "year": "1984",
+    "citation": "V. Zinoviev and S. Litsyn. Shortening of codes. {\\em Problems of Information Transmission}, 20(1):3--11, 1984.",
+    "source_sha256": "65411ecb93a451d5d8555e082a8515ba73c8008faf9c41fd746041c190b10813"
+  },
+  "zino84c": {
+    "authors": [
+      "Zinoviev",
+      "Litsyn"
+    ],
+    "year": "1984",
+    "citation": "V. Zinoviev and S. Litsyn. A table of the best known codes. Technical report, Institute for Problems of Information Transmission, Moscow, 1984.",
+    "source_sha256": "889912aa16498e1b29a6e3699389775660e0924244cc8eb7e0b36a5a59323d7b"
+  },
+  "zino85": {
+    "authors": [
+      "Zinoviev",
+      "Litsyn"
+    ],
+    "year": "1987",
+    "citation": "V. Zinoviev and S. Litsyn. On the general construction of codes shortening. {\\em Problems of Information Transmission}, 23(2):111--116, 1987.",
+    "source_sha256": "0b481623a8e5ed641fbccfc48ba0d14fab18a76d749cee69f18cb7e40f41c52d"
+  },
+  "sanchez2026": {
+    "authors": [
+      "Sanchez"
+    ],
+    "year": "2026",
+    "citation": "Oscar Sanchez. Gray image of a Z4 code of length 9 and minimum Lee distance 4, with 96 cosets of a 64-element submodule. Email, October 17, 2026; reported in Brouwer’s table.",
+    "url": "https://aeb.win.tue.nl/codes/binary-1.html",
+    "kind": "email"
+  },
+  "milshtein2026": {
+    "authors": [
+      "Milshtein"
+    ],
+    "year": "2026",
+    "citation": "Moshe Milshtein. Four New Single-Error-Correcting Binary Codes. arXiv:2610.23626, October 16, 2026.",
+    "url": "https://arxiv.org/abs/2610.23626",
+    "kind": "paper"
+  },
+  "ota2026": {
+    "authors": [
+      "Ota",
+      "Osa",
+      "Harada"
+    ],
+    "year": "2026",
+    "citation": "Kazuki Ota, Takayuki Osa and Tatsuya Harada. Three Improved Lower Bounds for Binary Error-Correcting Codes. arXiv:2610.11609, October 8, 2026.",
+    "url": "https://arxiv.org/abs/2610.11609",
+    "kind": "paper"
+  },
+  "chen2026": {
+    "authors": [
+      "Zhiyang Chen"
+    ],
+    "year": "2026",
+    "citation": "Zhiyang Chen. New lower bounds reported by email, October 21, 2026; recorded in Brouwer’s table.",
+    "url": "https://aeb.win.tue.nl/codes/binary-1.html",
+    "kind": "email"
+  },
+  "tseng2023": {
+    "authors": [
+      "Tseng",
+      "Lai",
+      "Yu"
+    ],
+    "year": "2023",
+    "citation": "Pin-Chieh Tseng, Ching-Yi Lai and Wei-Hsuan Yu. Semidefinite programming bounds for binary codes from a split Terwilliger algebra. Designs, Codes and Cryptography 91 (2023), 3241–3262.",
+    "url": "https://aeb.win.tue.nl/codes/binary-1.html",
+    "kind": "paper"
+  },
+  "gijswijt2012": {
+    "authors": [
+      "Gijswijt",
+      "Mittelmann",
+      "Schrijver"
+    ],
+    "year": "2012",
+    "citation": "D. C. Gijswijt, H. D. Mittelmann and A. Schrijver. Semidefinite code bounds based on quadruple distances. IEEE Transactions on Information Theory 58 (2012), 2697–2705.",
+    "url": "https://aeb.win.tue.nl/codes/binary-1.html",
+    "kind": "paper"
+  },
+  "haas2008": {
+    "authors": [
+      "Haas"
+    ],
+    "year": "2008",
+    "citation": "W. Haas. On the Failing Cases of the Johnson Bound for Error-Correcting Codes. Electronic Journal of Combinatorics 15 (2008), R55.",
+    "url": "https://aeb.win.tue.nl/codes/binary-1.html",
+    "kind": "paper"
+  },
+  "laaksonen2016": {
+    "authors": [
+      "Laaksonen",
+      "Östergård"
+    ],
+    "year": "2016",
+    "citation": "Antti Laaksonen and Patric R. J. Östergård. Constructing error-correcting binary codes using transitive permutation groups. arXiv:1604.06022, revised July 18, 2016.",
+    "url": "https://arxiv.org/abs/1604.06022",
+    "kind": "paper"
+  },
+  "mounits2002": {
+    "authors": [
+      "Mounits",
+      "Etzion",
+      "Litsyn"
+    ],
+    "year": "2002",
+    "citation": "B. Mounits, T. Etzion and S. Litsyn. Improved upper bounds on sizes of codes. IEEE Transactions on Information Theory 48 (2002), 880–886.",
+    "url": "https://aeb.win.tue.nl/codes/binary-1.html",
+    "kind": "paper"
+  },
+  "mounits2007": {
+    "authors": [
+      "Mounits",
+      "Etzion",
+      "Litsyn"
+    ],
+    "year": "2007",
+    "citation": "B. Mounits, T. Etzion and S. Litsyn. New Upper Bounds on Codes via Association Schemes and Linear Programming. Advances in Mathematics of Communications 1 (2007), 173–195.",
+    "url": "https://ir.cwi.nl/pub/11831/11831D.pdf",
+    "kind": "paper"
+  },
+  "ostergard1999": {
+    "authors": [
+      "Östergård",
+      "Baicheva",
+      "Kolev"
+    ],
+    "year": "1999",
+    "citation": "P. R. J. Östergård, T. Baicheva and E. Kolev. Optimal binary one-error-correcting codes of length 10 have 72 codewords. IEEE Transactions on Information Theory 45 (1999), 1229–1231.",
+    "url": "https://aeb.win.tue.nl/codes/binary-1.html",
+    "kind": "paper"
+  },
+  "ostergard2011": {
+    "authors": [
+      "Östergård"
+    ],
+    "year": "2011",
+    "citation": "P. R. J. Östergård. On the size of optimal three-error-correcting binary codes of length 16. Preprint, January 2011.",
+    "url": "https://aeb.win.tue.nl/codes/binary-1.html",
+    "kind": "paper"
+  },
+  "ostergard2019": {
+    "authors": [
+      "Östergård"
+    ],
+    "year": "2019",
+    "citation": "P. R. J. Östergård. The sextuply shortened binary Golay code is optimal. Designs, Codes and Cryptography 87 (2019), 341–347.",
+    "url": "https://aeb.win.tue.nl/codes/binary-1.html",
+    "kind": "paper"
+  },
+  "milshtein2019": {
+    "authors": [
+      "Milshtein"
+    ],
+    "year": "2019",
+    "citation": "Moshe Milshtein. A new two-error-correcting binary code of length 16. Cryptography and Communications (2019), 1–5.",
+    "url": "https://aeb.win.tue.nl/codes/binary-1.html",
+    "kind": "paper"
+  },
+  "elssel2005": {
+    "authors": [
+      "Elssel",
+      "Zimmermann"
+    ],
+    "year": "2005",
+    "citation": "K. Elssel and K.-H. Zimmermann. Two new nonlinear binary codes. IEEE Transactions on Information Theory 51 (2005), 1189–1190.",
+    "url": "https://aeb.win.tue.nl/codes/binary-1.html",
+    "kind": "paper"
+  },
+  "vanderzee2012": {
+    "authors": [
+      "van der Zee"
+    ],
+    "year": "2012",
+    "citation": "Henk van der Zee. Lower bound A(26,8) ≥ 4104. Personal communication, January 29, 2012; reported in Brouwer’s table.",
+    "url": "https://aeb.win.tue.nl/codes/binary-1.html",
+    "kind": "personal communication"
+  },
+  "schrijver2004": {
+    "authors": [
+      "Schrijver"
+    ],
+    "year": "2004",
+    "citation": "A. Schrijver. Upper bound A(28,8) ≤ 32151. Personal communication, March 2004; reported in Brouwer’s table.",
+    "url": "https://aeb.win.tue.nl/codes/binary-1.html",
+    "kind": "personal communication"
+  }
+}
