@@ -9,7 +9,7 @@ test('filters apply during an invalid range draft, including CSV exports', async
   page.elements.get('brouwer').checked = false;
   page.elements.get('brouwer').listeners.change();
   assert.equal(page.app.state.brouwer, false);
-  assert.equal(page.app.state.nEnd, 32);
+  assert.equal(page.app.state.nEnd, 36);
   assert.equal(page.elements.get('nEnd').value, '1');
   assert.equal(page.app.engine.calculate(17, 3, page.app.state).L, 5312n);
   page.app.startExport();

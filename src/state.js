@@ -2,7 +2,7 @@
 (function (root) {
   'use strict';
   const defaults = Object.freeze({ n: 17, d: 3, detailOpen: false,
-    nStart: 14, nEnd: 32, dStart: 3, dEnd: 15, parity: 'odd',
+    nStart: 12, nEnd: 36, dStart: 3, dEnd: 15, parity: 'odd',
     litsyn: true, brouwer: true, literature: true, theorems: true });
   const rangeFields = ['nStart', 'nEnd', 'dStart', 'dEnd'];
   const sourceFields = ['litsyn', 'brouwer', 'literature', 'theorems'];
