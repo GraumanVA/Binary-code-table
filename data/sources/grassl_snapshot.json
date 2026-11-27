@@ -1,0 +1,8 @@
+{
+  "snapshot_kind": "partial",
+  "date": null,
+  "source_url": "https://www.codetables.de/BKLC/Tables.php?q=2&n0=1&n1=256&k0=1&k1=256",
+  "html_sha256": null,
+  "normalized_sha256": "53fdb70586c4e471e318eef2c8d648e4d846fd0a4209ec8248a00d527ec160e8",
+  "note": "Recovered construction witnesses from the former improvements-only import. The original complete capture and its date are unavailable."
+}

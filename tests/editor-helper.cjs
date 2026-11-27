@@ -5,8 +5,8 @@ const { createEditor } = require('../src/editor.js');
 
 function mountEditor(options = {}) {
   const html = fs.readFileSync(path.join(__dirname, '../dist/editor.html'), 'utf8');
-  const standalone = fs.readFileSync(path.join(__dirname, '../coding_bounds.html'), 'utf8');
-  const data = JSON.parse(standalone.match(/<script id="seed" type="application\/json">([\s\S]*?)<\/script>/)[1]);
+  const standalone = fs.readFileSync(path.join(__dirname, '../build/coding_bounds.html'), 'utf8');
+  const data = options.data || JSON.parse(standalone.match(/<script id="seed" type="application\/json">([\s\S]*?)<\/script>/)[1]);
   const elements = new Map(), downloads = [], objectURLs = new Map(), stored = options.stored || new Map();
   class Element {
     constructor(attributes = '') {
@@ -40,7 +40,8 @@ function mountEditor(options = {}) {
   const document = { getElementById: id => elements.get(id), createElement: () => new Element(), body: { append() {} } };
   const window = {
     location: { protocol: 'https:', pathname: '/repository/editor.html', href: 'https://bounds.example/repository/editor.html', hash: options.hash || '' },
-    localStorage: { getItem: key => stored.get(key), setItem: (key, value) => stored.set(key, value) },
+    localStorage: { get length() { return stored.size; }, key: i => [...stored.keys()][i],
+      getItem: key => stored.get(key), setItem: (key, value) => stored.set(key, value) },
     Blob, confirm: () => true, setTimeout: callback => callback(),
     URL: { createObjectURL(blob) { const key = `blob:editor-${objectURLs.size}`; objectURLs.set(key, blob); return key; }, revokeObjectURL() {} },
     ...options.window,

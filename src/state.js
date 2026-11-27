@@ -2,15 +2,16 @@
 (function (root) {
   'use strict';
   const defaults = Object.freeze({ n: 17, d: 3, detailOpen: false,
-    nStart: 12, nEnd: 36, dStart: 3, dEnd: 15, parity: 'odd',
-    litsyn: true, brouwer: true, literature: true, theorems: true });
+    nStart: 12, nEnd: 36, dStart: 3, dEnd: 19, parity: 'odd',
+    litsyn: true, brouwer: true, grassl: true, literature: true, theorems: true });
   const rangeFields = ['nStart', 'nEnd', 'dStart', 'dEnd'];
-  const sourceFields = ['litsyn', 'brouwer', 'literature', 'theorems'];
+  const sourceFields = ['litsyn', 'brouwer', 'grassl', 'literature', 'theorems'];
 
   function applyControls(previous, controls) {
     // Filters always apply, even when a range field is an unfinished draft.
     const next = { ...previous, parity: controls.parity,
       litsyn: controls.litsyn, brouwer: controls.brouwer, theorems: controls.theorems };
+    next.grassl = controls.grassl ?? previous.grassl;
     next.literature = controls.literature ?? previous.literature;
     const values = {}, invalid = [];
     let message = '';
@@ -57,6 +58,7 @@
     for (const field of sourceFields) {
       if (params.get(field) === '0' || params.get(field) === '1') state[field] = params.get(field) === '1';
     }
+    if (!params.has('grassl')) state.grassl = state.literature;
     if (['all', 'odd', 'even'].includes(params.get('parity'))) state.parity = params.get('parity');
     const controls = { ...state };
     for (const field of rangeFields) if (params.has(field)) controls[field] = params.get(field);

@@ -2,9 +2,9 @@ import copy
 import unittest
 from unittest.mock import patch
 
-from build_coding_bounds import build_dataset
-from coding_bounds_claims import validate_literature_claims, validate_literature_consistency
-from coding_bounds_attribution import bibliography_metadata
+from atlas.dataset import build_dataset
+from atlas.claims import validate_literature_claims, validate_literature_consistency
+from atlas.attribution import bibliography_metadata
 
 
 class MaintenanceTests(unittest.TestCase):
@@ -47,7 +47,7 @@ class MaintenanceTests(unittest.TestCase):
     def test_citation_text_can_be_corrected_without_editing_the_raw_archive(self):
         reviewed = copy.deepcopy(self.dataset['citation_metadata'])
         reviewed['shek89']['citation'] += ' Editorial clarification.'
-        with patch('coding_bounds_attribution.json.loads', return_value=reviewed):
+        with patch('atlas.attribution.json.loads', return_value=reviewed):
             metadata = bibliography_metadata(self.dataset['bibliography'])
             self.assertTrue(metadata['shek89']['citation'].endswith('Editorial clarification.'))
             changed_archive = dict(self.dataset['bibliography'])

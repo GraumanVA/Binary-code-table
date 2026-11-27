@@ -21,4 +21,9 @@
 .editor-actions { display: flex; flex-wrap: wrap; gap: 10px; margin: 18px 0; }
 .editor-downloads details { margin: 18px 0; font-size: .875rem; }
 .editor-downloads code { overflow-wrap: anywhere; }
+.editor-evidence { min-width: 0; margin: 18px 0; padding: 0 12px 12px; border: 1px solid var(--line); border-radius: 5px; }
+.editor-evidence legend { padding: 0 5px; font-size: .9rem; font-weight: 600; }
+.editor-changes { padding-left: 22px; }
+.editor-changes h3 { font-size: .875rem; margin-bottom: 4px; }
+.editor-changes pre { margin-top: 0; white-space: pre-wrap; overflow-wrap: anywhere; }
 @media (max-width: 760px) { .editor-grid { grid-template-columns: 1fr; gap: 28px; } }

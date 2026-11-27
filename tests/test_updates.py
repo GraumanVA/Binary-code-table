@@ -7,9 +7,9 @@ from pathlib import Path
 from unittest.mock import patch
 from zipfile import ZipFile
 
-from coding_bounds_updates import apply_update_file, validate_update_bundle
-from package_github_pages import source_files, write_archive
-from render_coding_bounds import prepare_payload
+from atlas.updates import apply_update_file, validate_update_bundle
+from atlas.distribution import source_files, write_archive
+from atlas.render import prepare_payload
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -23,6 +23,10 @@ class UpdateTests(unittest.TestCase):
         return dict(format='a-nd-update', schema_version=1, base_version=self.dataset['metadata']['version'],
                     files={'data/citations.json': copy.deepcopy(self.dataset['citation_metadata']),
                            'data/literature_claims.json': []})
+
+    def patch_bundle(self, *, citations=None, claims=None):
+        return dict(format='a-nd-update', schema_version=2, base_version='an-older-snapshot',
+                    changes={'citations': citations or [], 'claims': claims or []})
 
     def test_reviewed_reference_and_literature_updates_validate_together(self):
         bundle = self.bundle()
@@ -59,11 +63,12 @@ class UpdateTests(unittest.TestCase):
         (folder / 'data').mkdir()
         try:
             for name in ['citations.json', 'literature_claims.json']:
-                (folder / 'data' / name).write_text('original', encoding='utf-8')
+                (folder / 'data' / name).write_bytes((ROOT / 'data' / name).read_bytes())
             filename = folder / 'update.json'
             bundle = self.bundle()
+            bundle['files']['data/citations.json']['shek89']['citation'] = 'Corrected citation display.'
             filename.write_text(json.dumps(bundle), encoding='utf-8')
-            with patch('coding_bounds_updates.ROOT', folder):
+            with patch('atlas.updates.ROOT', folder):
                 apply_update_file(filename)
             self.assertEqual(json.loads((folder / 'data/citations.json').read_text(encoding='utf-8')),
                              bundle['files']['data/citations.json'])
@@ -72,7 +77,7 @@ class UpdateTests(unittest.TestCase):
             bundle['base_version'] = 'old'
             filename.write_text(json.dumps(bundle), encoding='utf-8')
             before = (folder / 'data/citations.json').read_bytes()
-            with patch('coding_bounds_updates.ROOT', folder), self.assertRaises(ValueError):
+            with patch('atlas.updates.ROOT', folder), self.assertRaises(ValueError):
                 apply_update_file(filename)
             self.assertEqual((folder / 'data/citations.json').read_bytes(), before)
         finally:
@@ -83,6 +88,58 @@ class UpdateTests(unittest.TestCase):
             (folder / 'data').rmdir()
             folder.rmdir()
 
+    def test_patch_merges_older_reviewed_updates_and_can_be_reapplied(self):
+        old = self.dataset['citation_metadata']['shek89']
+        corrected = dict(old, citation='Corrected citation display.')
+        claim = dict(id='PAPER-TEST-17-3', n=17, d=3, lower='6144',
+                     references=['milshtein2026'], source_locator='Abstract')
+        bundle = self.patch_bundle(
+            citations=[dict(key='shek89', before=old, after=corrected)],
+            claims=[dict(key=claim['id'], before=None, after=claim)])
+        folder = ROOT / ('.test-output-' + uuid.uuid4().hex)
+        folder.mkdir()
+        (folder / 'data').mkdir()
+        references = folder / 'data/citations.json'
+        claims = folder / 'data/literature_claims.json'
+        filename = folder / 'update.json'
+        try:
+            citations = copy.deepcopy(self.dataset['citation_metadata'])
+            citations['etzi00']['citation'] = 'An unrelated edit.'
+            references.write_text(json.dumps(citations), encoding='utf-8')
+            claims.write_text('[]', encoding='utf-8')
+            filename.write_text(json.dumps(bundle), encoding='utf-8')
+            with patch('atlas.updates.ROOT', folder):
+                applied = apply_update_file(filename)
+                self.assertEqual(applied['literature_claims'], [claim])
+                self.assertEqual(applied['citation_metadata']['shek89'], corrected)
+                self.assertEqual(applied['citation_metadata']['etzi00']['citation'], 'An unrelated edit.')
+                unchanged = references.read_bytes()
+                claims.write_text(json.dumps([claim]), encoding='utf-8')
+                original_claims = claims.read_bytes()
+                apply_update_file(filename)
+                self.assertEqual(references.read_bytes(), unchanged)
+                self.assertEqual(claims.read_bytes(), original_claims)
+        finally:
+            for path in (references, claims, filename):
+                path.unlink(missing_ok=True)
+            (folder / 'data').rmdir()
+            folder.rmdir()
+
+    def test_patch_rejects_same_record_conflicts_and_malformed_changes(self):
+        old = self.dataset['citation_metadata']['shek89']
+        new = dict(old, citation='Corrected citation display.')
+        edit = dict(key='shek89', before=old, after=new)
+        conflict = dict(edit, before=dict(old, citation='Another version.'))
+        with self.assertRaisesRegex(ValueError, 'citations.shek89'):
+            validate_update_bundle(self.patch_bundle(citations=[conflict]))
+        with self.assertRaisesRegex(ValueError, 'duplicate citations'):
+            validate_update_bundle(self.patch_bundle(citations=[edit, edit]))
+        invalid = dict(key='PAPER-TEST', before=None, after=dict(id='PAPER-OTHER-ID'))
+        with self.assertRaisesRegex(ValueError, 'Invalid claims'):
+            validate_update_bundle(self.patch_bundle(claims=[invalid]))
+        with self.assertRaisesRegex(ValueError, 'original archive fingerprint'):
+            validate_update_bundle(self.patch_bundle(citations=[dict(edit, after=None)]))
+
 
 class PackageTests(unittest.TestCase):
     def test_source_package_is_reproducible_and_contains_the_complete_build_inputs(self):
@@ -92,12 +149,14 @@ class PackageTests(unittest.TestCase):
         self.assertEqual(first.getvalue(), second.getvalue())
         with ZipFile(first) as archive:
             names = archive.namelist()
-            for required in ['README.md', 'PUBLISHING.md', 'index.html', 'refs.html',
-                             'render_coding_bounds.py', 'coding_bounds_updates.py', 'data/citations.json',
-                             'coding_bounds_grassl.py', 'data/grassl_improvements.csv', 'data/grassl_references.json',
+            for required in ['README.md', 'NOTICE.md', 'docs/PUBLISHING.md', 'docs/MAINTENANCE.md',
+                             'data/sources/index.html', 'data/sources/refs.html',
+                             'data/sources/grassl_binary.csv', 'data/sources/grassl_snapshot.json',
+                             'atlas/__main__.py', 'atlas/render.py', 'atlas/updates.py',
+                             'atlas/grassl.py', 'data/citations.json', 'data/grassl_references.json',
                              'data/literature_claims.json', 'src/editor.js', '.github/workflows/pages.yml']:
                 self.assertIn(required, names)
-            self.assertFalse(any('__pycache__' in name or name.startswith(('dist/', 'release/')) or 'preview' in name for name in names))
+            self.assertFalse(any('__pycache__' in name or name.startswith(('build/', 'dist/', 'release/')) for name in names))
             self.assertNotIn('coding_bounds_seed.json', names)
             self.assertNotIn('coding_bounds.html', names)
 
@@ -115,7 +174,7 @@ class PackageTests(unittest.TestCase):
                     self.assertIn(version, name)
             for name in ['index.html', 'editor.html']:
                 page = archive.read(name).decode('utf-8')
-                self.assertNotIn('preview', page.lower())
+                self.assertNotIn('__EDITOR_CONFIG__', page)
                 self.assertNotIn('Example: a newer lower bound', page)
 
 

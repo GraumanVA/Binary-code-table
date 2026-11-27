@@ -2,11 +2,11 @@ import json
 import unittest
 from pathlib import Path
 
-from build_coding_bounds import build_dataset
-from coding_bounds_attribution import strip_latex_comments
-from coding_bounds_import import parse_bibliography
-from coding_bounds_math import elementary_upper
-from render_coding_bounds import embedded_json, prepare_payload
+from atlas.dataset import build_dataset
+from atlas.attribution import strip_latex_comments
+from atlas.archives import parse_bibliography
+from atlas.math import elementary_upper
+from atlas.render import embedded_json, prepare_payload
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -14,7 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 class ImportTests(unittest.TestCase):
     def test_reimport_matches_claims_and_keeps_comments_out_of_citations(self):
         data = build_dataset()
-        saved = json.loads((ROOT / 'coding_bounds_seed.json').read_text(encoding='utf-8'))
+        saved = json.loads((ROOT / 'build/coding_bounds_seed.json').read_text(encoding='utf-8'))
         self.assertEqual(data['litsyn'], saved['litsyn'])
         self.assertEqual(data['brouwer'], saved['brouwer'])
         self.assertEqual(len(data['bibliography']), 108)
@@ -45,13 +45,13 @@ class ImportTests(unittest.TestCase):
         self.assertNotIn('id="seed"', page)
         self.assertNotIn('N. Shekhunova', page)
         self.assertLess(len(page), 15000)
-        self.assertIn('id="seed"', (ROOT / 'coding_bounds.html').read_text(encoding='utf-8'))
+        self.assertIn('id="seed"', (ROOT / 'build/coding_bounds.html').read_text(encoding='utf-8'))
         manifest = json.loads((ROOT / 'dist/data/manifest.json').read_text(encoding='utf-8'))
         self.assertEqual(manifest['version'], release['version'])
         for filename in manifest['files'].values():
             document = json.loads((ROOT / 'dist/data' / filename).read_text(encoding='utf-8'))
             self.assertEqual(document['version'], release['version'])
-        self.assertIn('bundle-playback.js', (ROOT / 'index.html').read_text(encoding='utf-8'))
+        self.assertIn('bundle-playback.js', (ROOT / 'data/sources/index.html').read_text(encoding='utf-8'))
 
     def test_parity_partners_share_the_tightest_available_upper_bound(self):
         for n, d in [(32, 19), (35, 21)]:

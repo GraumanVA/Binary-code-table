@@ -1,24 +1,19 @@
 """Create reproducible source and static-site ZIPs for GitHub Pages publication."""
 import hashlib
-from pathlib import Path
 from zipfile import ZIP_DEFLATED, ZipFile, ZipInfo
 
-ROOT = Path(__file__).resolve().parent
-SOURCE_FILES = [
-    '.gitignore', 'README.md', 'MAINTENANCE.md', 'PUBLISHING.md', 'NOTICE.md', 'package.json',
-    'index.html', 'refs.html', 'build_coding_bounds.py', 'manage_coding_bounds.py',
-    'render_coding_bounds.py', 'serve_coding_bounds.py', 'validate_coding_bounds.py',
-    'coding_bounds_import.py', 'coding_bounds_attribution.py', 'coding_bounds_claims.py',
-    'coding_bounds_grassl.py', 'coding_bounds_math.py', 'coding_bounds_updates.py', 'package_github_pages.py',
-]
-SOURCE_FOLDERS = ['src', 'data', 'tests', '.github']
+from .paths import BUILD_DIR, RELEASE_DIR, ROOT, SITE_DIR
+
+SOURCE_FILES = ['.gitignore', 'README.md', 'NOTICE.md', 'package.json']
+SOURCE_FOLDERS = ['atlas', 'src', 'data', 'docs', 'tests', '.github']
+SOURCE_LOCKS = {'.atlas-update.lock', '.grassl-import.lock'}
 
 
 def source_files():
     paths = [ROOT / name for name in SOURCE_FILES]
     for name in SOURCE_FOLDERS:
         paths.extend(path for path in (ROOT / name).rglob('*')
-                     if path.is_file() and '__pycache__' not in path.parts
+                     if path.is_file() and '__pycache__' not in path.parts and path.name not in SOURCE_LOCKS
                      and not path.name.endswith(('.pyc', '.pending')))
     return sorted(paths)
 
@@ -35,21 +30,15 @@ def write_archive(destination, files, base):
 
 
 def package():
-    output = ROOT / 'release'
-    output.mkdir(exist_ok=True)
-    if output.is_symlink():
+    output = RELEASE_DIR
+    if output.resolve() != ROOT.resolve() / BUILD_DIR.name / 'release':
         raise ValueError('Release directory must stay inside the project')
+    output.mkdir(parents=True, exist_ok=True)
     source = output / 'github-pages-source.zip'
     site = output / 'github-pages-site.zip'
     write_archive(source, source_files(), ROOT)
-    write_archive(site, [path for path in (ROOT / 'dist').rglob('*') if path.is_file()], ROOT / 'dist')
+    write_archive(site, [path for path in SITE_DIR.rglob('*') if path.is_file()], SITE_DIR)
     checksums = '\n'.join(f'{hashlib.sha256(path.read_bytes()).hexdigest()}  {path.name}' for path in [source, site])
     (output / 'SHA256SUMS').write_text(checksums + '\n', encoding='utf-8')
-    print('Prepared release/github-pages-source.zip and release/github-pages-site.zip.')
+    print(f'Prepared {source.relative_to(ROOT).as_posix()} and {site.relative_to(ROOT).as_posix()}.')
     return source, site
-
-
-if __name__ == '__main__':
-    from manage_coding_bounds import build
-    build()
-    package()

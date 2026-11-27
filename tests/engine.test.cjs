@@ -3,27 +3,36 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const { createEngine } = require('../src/bounds.js');
-const { createCalculator } = require('../src/math.js');
+const { createCalculator, oddPartner } = require('../src/math.js');
 const { createFormatters } = require('../src/format.js');
-const data = JSON.parse(fs.readFileSync(path.join(__dirname, '../coding_bounds_seed.json'), 'utf8'));
+const data = JSON.parse(fs.readFileSync(path.join(__dirname, '../build/coding_bounds_seed.json'), 'utf8'));
 
-test('all imported-range results are consistent and parity-equivalent', () => {
+test('all sourced distances and derived lengths are consistent and parity-equivalent', () => {
   const engine = createEngine(data);
-  let count = 0;
-  for (let n = 3; n <= 512; n++) {
-    for (let d = 3; d <= Math.min(29, n); d++) {
-      const result = engine.calculate(n, d);
-      assert(!result.conflict, `${n},${d}`);
-      assert(result.cs.every(claim => !claim.record || !data.editorial_exclusions.some(item => item.claim_id === claim.record.id)));
-      if (d % 2 && n < 512) {
-        const partner = engine.calculate(n + 1, d + 1);
-        assert.equal(result.L, partner.L, `${n},${d} lower`);
-        assert.equal(result.U, partner.U, `${n},${d} upper`);
-      }
-      count++;
+  const exclusions = new Set(data.editorial_exclusions.map(row => row.claim_id));
+  const sources = [...data.litsyn, ...data.brouwer, ...data.grassl, ...data.literature_claims]
+    .filter(row => row.active !== false && !exclusions.has(row.id));
+  const sourcedPairs = sources.map(row => oddPartner(row.n, row.d));
+  function checkPair(n, d) {
+    if (n === 0) {
+      assert(!engine.calculate(1, 2).conflict);
+      return;
+    }
+    const result = engine.calculate(n, d);
+    assert(!result.conflict, `${n},${d}`);
+    assert(result.cs.every(claim => !claim.record || !exclusions.has(claim.record.id)));
+    if (n < 512) {
+      const partner = engine.calculate(n + 1, d + 1);
+      assert.equal(result.L, partner.L, `${n},${d} lower`);
+      assert.equal(result.U, partner.U, `${n},${d} upper`);
     }
   }
-  assert.equal(count, 13419);
+  for (const d of new Set(sourcedPairs.map(row => row.d))) {
+    for (let n = d; n <= 512; n++) checkPair(n, d);
+  }
+  for (const { n, d } of sourcedPairs) {
+    if (n < d) checkPair(n, d);
+  }
 });
 
 test('parity closure works with every combination of enabled sources', () => {
@@ -42,7 +51,7 @@ test('parity closure works with every combination of enabled sources', () => {
     { n: 33, d: 20, rule: 'Plotkin bound' });
 });
 
-test('Grassl improves the lower bound on both sides of parity and credits the construction', () => {
+test('Grassl supports the lower bound on both sides of parity and credits the construction', () => {
   const engine = createEngine(data);
   const baseline = createEngine({ ...data, grassl: [] });
   for (const [n, d, lower] of [[30, 19, 4n], [40, 13, 8192n], [256, 169, 4n]]) {
@@ -50,12 +59,14 @@ test('Grassl improves the lower bound on both sides of parity and credits the co
       const result = engine.calculate(length, distance);
       const previous = baseline.calculate(length, distance);
       assert.equal(result.L, lower);
-      assert(result.L > previous.L);
+      assert(result.L >= previous.L);
+      assert(result.cs.some(claim => claim.source === 'G' && claim.lower === lower));
       assert.equal(result.U, previous.U);
     }
   }
   const disabled = { litsyn: true, brouwer: true, theorems: true, literature: false };
-  assert.equal(engine.calculate(30, 19, disabled).L, 2n);
+  assert.equal(engine.calculate(30, 19, disabled).L, baseline.calculate(30, 19, disabled).L);
+  assert(!engine.calculate(30, 19, disabled).cs.some(claim => claim.source === 'G'));
   const witness = engine.calculate(31, 20).cs.find(claim => claim.source === 'G');
   const format = createFormatters(data);
   assert.equal(format.boundAttributions([witness], 'lower'), 'Cordaro and Wagner (1967)');
@@ -71,6 +82,53 @@ test('Grassl improves the lower bound on both sides of parity and credits the co
   assert(kurzDetails.includes('https://doi.org/10.3934/amc.2020074'));
   assert(kurzDetails.includes('q=2&amp;n=45&amp;k=9'));
   assert(kurzDetails.includes('Puncturing the [46,9,20] code'));
+});
+
+test('zero padding repairs the archive gap and keeps its source and parity derivation', () => {
+  const engine = createEngine(data);
+  const archiveOnly = { litsyn: true, brouwer: false, grassl: false, literature: false, theorems: true };
+  const before = engine.calculate(61, 25, archiveOnly);
+  const result = engine.calculate(62, 25, archiveOnly);
+  assert.equal(before.L, 4096n);
+  assert.equal(result.L, before.L);
+  const padded = result.cs.find(claim => claim.padding);
+  assert.equal(padded.record.id, 'LIT-61-25');
+  assert.equal(padded.upper, null);
+  assert(result.cs.some(claim => claim.source === 'L' && !claim.padding));
+
+  const partner = engine.calculate(63, 26, archiveOnly);
+  assert.equal(partner.L, result.L);
+  const format = createFormatters(data);
+  const partnerClaim = partner.cs.find(claim => claim.padding);
+  const markup = format.displayClaim(partnerClaim);
+  assert(markup.includes('odd/even parity identity'));
+  assert(markup.includes('Append one zero coordinate'));
+  assert.deepEqual(format.referenceIds(partnerClaim, 'lower'), padded.record.refs);
+});
+
+test('the final Grassl length pads forward and source filters stay independent', () => {
+  const engine = createEngine(data);
+  const settings = { grassl: true, literature: false, theorems: true };
+  const source = engine.calculate(256, 31, settings);
+  const result = engine.calculate(257, 31, settings);
+  assert(source.L > 2n);
+  assert(result.L >= source.L);
+  const claim = result.cs.find(item => item.padding && item.source === 'G');
+  assert(claim);
+  assert.equal(claim.upper, null);
+  assert.equal(engine.calculate(258, 32, settings).L, result.L);
+  assert.equal(engine.calculate(257, 31, { ...settings, grassl: false, literature: true }).L, 2n);
+});
+
+test('literature lower bounds pad forward without carrying over their upper bounds', () => {
+  const row = { n: 18, d: 4, lower: '6144', upper: '6551' };
+  const engine = createEngine({ ...data, literature_claims: [row] });
+  const settings = { literature: true, grassl: false };
+  const result = engine.calculate(19, 4, settings);
+  assert.equal(result.L, 6144n);
+  assert.equal(result.U, null);
+  assert.deepEqual(result.cs[0].padding, { fromN: 18, toN: 19, d: 4 });
+  assert.equal(engine.calculate(19, 4, { ...settings, literature: false }).L, null);
 });
 
 test('exact arithmetic retains Johnson, perfect-code and boundary results', () => {

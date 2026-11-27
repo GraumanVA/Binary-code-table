@@ -21,7 +21,9 @@
       if (claim.source === 'G' && side === 'lower') {
         return claim.record.references || [data.metadata.grassl.reference_id];
       }
-      if (claim.source === 'P' && claim[side] != null) return claim.record.references || [];
+      if (claim.source === 'P' && claim[side] != null) {
+        return claim.record[`${side}_references`] ?? claim.record.references ?? [];
+      }
       return [];
     }
 
@@ -149,7 +151,9 @@
             ? ` <a href="${esc(url)}" target="_blank" rel="noopener noreferrer">Source</a>` : '';
           return esc(reference.citation) + link;
         }).join('<br>') : 'Original paper not identified in the imported notes.';
-        return `<p><strong>${label}:</strong> ${references}</p>`;
+        const locator = claim.source === 'P'
+          ? claim.record[`${side}_source_locator`] ?? claim.record.source_locator : '';
+        return `<p><strong>${label}:</strong> ${references}${locator ? `<br>${esc(locator)}` : ''}</p>`;
       };
       const compilation = constructionURL
         ? `<a href="${esc(constructionURL)}" target="_blank" rel="noopener noreferrer">CodeTables construction</a>`
@@ -179,7 +183,15 @@
       }
       if (claim.source === 'G') {
         if (claim.record.reference_note) derivations.push(claim.record.reference_note);
-        if (claim.parity) derivations.push('Transfer this lower bound to the selected parameters by the odd/even parity identity.');
+        if (claim.parity && !claim.padding) derivations.push('Transfer this lower bound to the selected parameters by the odd/even parity identity.');
+      }
+      if (claim.padding) {
+        const { fromN, toN, d } = claim.padding;
+        if (claim.originD !== d) {
+          derivations.push(`Use the odd/even parity identity to transfer the lower bound to A(${fromN},${d}).`);
+        }
+        const coordinates = toN - fromN;
+        derivations.push(`Append ${coordinates === 1 ? 'one zero coordinate' : `${coordinates} zero coordinates`} to each codeword to increase the length from ${fromN} to ${toN}. The minimum distance and code size are preserved.`);
       }
       const type = claim.record.type;
       const typeName = data.code_types[type] ? ` (${esc(data.code_types[type])})` : '';
@@ -188,14 +200,14 @@
         : claim.source === 'G'
           ? `Binary linear code [${esc(claim.record.code_n)}, ${esc(claim.record.k)}, ${esc(claim.record.code_d)}] with 2<sup>${esc(claim.record.k)}</sup> codewords.`
           : claim.source === 'P'
-            ? `Literature record ${esc(claim.record.id)}${claim.record.source_locator ? ': '+esc(claim.record.source_locator) : ''}.`
+            ? `Literature record ${esc(claim.record.id)}.`
             : 'Imported via Brouwer’s table (2026); paper and communication credits are listed below.';
       const exact = archived
         ? (lower !== esc(exactVal(original)) ? exactIntegers([['Archived lower bound', original]]) : '')
         : numberDetails(lower, upper, claim.lower, claim.upper);
       const title = claim.source === 'B' ? 'Imported table claim'
         : esc(boundAttributions([claim], claim.lower != null ? 'lower' : 'upper'));
-      const derived = claim.parity || claim.implied ? '<span class="claim-derived"> · derived</span>' : '';
+      const derived = claim.parity || claim.implied || claim.padding ? '<span class="claim-derived"> · derived</span>' : '';
       return `<div class="claim">
         <div class="claim-title">${title}${derived}</div><div class="claim-result">${result}</div>
         ${approximationNote(result)}${exact}<div class="claim-meta">${provenance}</div>

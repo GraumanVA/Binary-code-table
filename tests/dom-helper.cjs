@@ -4,7 +4,7 @@ const path = require('node:path');
 const { createApp } = require('../src/app.js');
 
 function mount(hash = '', additions = {}, options = {}) {
-  const filename = options.edition === 'external' ? '../dist/index.html' : '../coding_bounds.html';
+  const filename = options.edition === 'external' ? '../dist/index.html' : '../build/coding_bounds.html';
   const html = fs.readFileSync(path.join(__dirname, filename), 'utf8');
   const elements = new Map(), downloads = [], objectURLs = new Map();
   let urlCounter = 0;
@@ -56,7 +56,7 @@ function mount(hash = '', additions = {}, options = {}) {
     },
     addEventListener() {},
     querySelectorAll() {
-      return ['nStart', 'nEnd', 'dStart', 'dEnd', 'parity', 'litsyn', 'brouwer', 'literature',
+      return ['nStart', 'nEnd', 'dStart', 'dEnd', 'lookupN', 'lookupD', 'lookupSubmit', 'parity', 'litsyn', 'brouwer', 'grassl', 'literature',
         'theorems', 'export', 'cancelExport', 'retryLoad'].map(id => elements.get(id)).filter(Boolean);
     },
     createElement: () => new Element(''),

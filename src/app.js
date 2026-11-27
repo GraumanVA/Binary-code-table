@@ -11,6 +11,14 @@
     const data = options.data || JSON.parse(q('seed').textContent);
     const version = data.metadata.version;
     q('datasetVersion').textContent = version;
+    const grasslMetadata = data.metadata.grassl;
+    if (grasslMetadata?.snapshot_kind === 'partial') {
+      q('grasslCoverage').textContent = 'The CodeTables snapshot contains a partial set of recovered constructions.';
+      q('grasslCoverage').hidden = false;
+    } else if (grasslMetadata?.date) {
+      q('grasslCoverage').textContent = `Binary CodeTables snapshot captured ${grasslMetadata.date}.`;
+      q('grasslCoverage').hidden = false;
+    }
     const engine = Bounds.createEngine(data);
     const st = { ...State.defaults };
     const { esc, notation, exactVal, boundAttributions, boundNumber,
@@ -26,6 +34,11 @@
     function syncControls() {
       for (const id of [...State.rangeFields, 'parity']) q(id).value = st[id];
       for (const id of State.sourceFields) q(id).checked = st[id];
+      if (st.detailOpen) {
+        q('lookupN').value = st.n;
+        q('lookupD').value = st.d;
+        q('lookupNote').hidden = true;
+      }
       q('rangeNote').hidden = true;
       q('rangeNote').textContent = '';
       for (const id of State.rangeFields) q(id).setAttribute('aria-invalid', 'false');
@@ -128,7 +141,7 @@
         </div>
         <div class="detail-content">
           <div class="subhead">Source claims and derivations (${result.cs.length})</div>${notes}
-          <div class="outbound"><a href="${q('seed') ? './dist/editor.html' : './editor.html'}#A-${st.n}-${st.d}">Update this entry</a> · <a href="#sources">Source data</a></div></div>`;
+          <div class="outbound"><a href="${q('seed') ? '../dist/editor.html' : './editor.html'}#A-${st.n}-${st.d}">Update this entry</a> · <a href="#sources">Source data</a></div></div>`;
       q('closeDetail').addEventListener('click', closeDetail);
     }
 
@@ -164,9 +177,8 @@
     function render() { showGrid(); showDetail(); }
 
     function readControls() {
-      const controls = { parity: q('parity').value,
-        litsyn: q('litsyn').checked, brouwer: q('brouwer').checked, theorems: q('theorems').checked };
-      controls.literature = q('literature').checked;
+      const controls = { parity: q('parity').value };
+      for (const id of State.sourceFields) controls[id] = q(id).checked;
       for (const id of State.rangeFields) controls[id] = q(id).value;
       const result = State.applyControls(st, controls);
       Object.assign(st, result.next);
@@ -284,6 +296,14 @@
     for (const id of [...State.rangeFields, 'parity', ...State.sourceFields]) {
       q(id).addEventListener('change', readControls);
     }
+    q('lookup').addEventListener('submit', event => {
+      event.preventDefault();
+      const [n, d] = ['lookupN', 'lookupD'].map(id => Number(q(id).value));
+      const valid = [n, d].every(value => Number.isInteger(value) && value >= 1 && value <= 512);
+      q('lookupNote').hidden = valid;
+      q('lookupNote').textContent = valid ? '' : 'Enter a length and distance from 1 to 512.';
+      if (valid) choose(n, d);
+    });
     q('matrix').addEventListener('click', event => {
       const cell = event.target.closest('button[data-n]');
       if (cell && q('matrix').contains(cell)) choose(Number(cell.dataset.n), Number(cell.dataset.d));

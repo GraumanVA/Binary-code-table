@@ -2,9 +2,7 @@
 import json
 import re
 import hashlib
-from pathlib import Path
-
-DATA = Path(__file__).resolve().parent / 'data'
+from .paths import DATA_DIR as DATA
 
 
 def strip_latex_comments(text):

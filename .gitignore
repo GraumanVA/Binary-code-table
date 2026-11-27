@@ -1,6 +1,7 @@
 __pycache__/
 *.pyc
 node_modules/
+build/
 dist/
 release/
 coding_bounds.html
@@ -11,4 +12,7 @@ coding_bounds_johnson_improvements.csv
 litsyn_import.csv
 brouwer_import.csv
 data/*.pending
+data/.atlas-update.lock
+data/sources/.*.pending
+data/sources/.grassl-import.lock
 .test-output-*/

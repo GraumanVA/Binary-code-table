@@ -6,7 +6,7 @@ const { Worker } = require('node:worker_threads');
 const { generateCSV } = require('../src/export.js');
 const { createEngine } = require('../src/bounds.js');
 const { defaults } = require('../src/state.js');
-const html = fs.readFileSync(path.join(__dirname, '../coding_bounds.html'), 'utf8');
+const html = fs.readFileSync(path.join(__dirname, '../build/coding_bounds.html'), 'utf8');
 const data = JSON.parse(html.match(/<script id="seed" type="application\/json">([\s\S]*?)<\/script>/)[1]);
 
 test('CSV uses exact integers, version and a frozen source snapshot', async () => {

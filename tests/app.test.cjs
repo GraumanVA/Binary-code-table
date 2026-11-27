@@ -44,6 +44,36 @@ test('legacy links work and mismatched snapshot links produce a visible notice',
   assert(mismatch.elements.get('snapshotNotice').textContent.includes('older-snapshot'));
 });
 
+test('parameter lookup opens the requested entry and adjusts the view', () => {
+  const page = mount();
+  const submit = () => page.elements.get('lookup').listeners.submit({ preventDefault() {} });
+  assert(page.elements.get('matrixBody').innerHTML.includes('data-n="30" data-d="19"'));
+  page.elements.get('lookupN').value = '513';
+  page.elements.get('lookupD').value = '62';
+  submit();
+  assert.equal(page.app.state.detailOpen, false);
+  assert.equal(page.elements.get('lookupNote').hidden, false);
+  page.elements.get('lookupN').value = '220';
+  submit();
+  assert.equal(page.app.state.n, 220);
+  assert.equal(page.app.state.d, 62);
+  assert.equal(page.app.state.parity, 'even');
+  assert.equal(page.elements.get('lookupNote').hidden, true);
+  assert.match(page.window.location.hash, /^#A-220-62\?/);
+});
+
+test('Grassl can be filtered independently and old links preserve the original combined setting', () => {
+  const legacy = mount('#A-30-19?literature=0');
+  assert.equal(legacy.app.state.grassl, false);
+  assert.equal(legacy.app.state.literature, false);
+  legacy.elements.get('grassl').checked = true;
+  legacy.elements.get('grassl').listeners.change();
+  assert.equal(legacy.app.engine.calculate(30, 19, legacy.app.state).L, 4n);
+  const restored = mount(legacy.window.location.hash);
+  assert.equal(restored.app.state.grassl, true);
+  assert.equal(restored.app.state.literature, false);
+});
+
 test('large ranges remain independent and virtual rows reach the end', () => {
   const page = mount();
   for (const [key, value] of [['nStart', 1], ['nEnd', 512], ['dStart', 1], ['dEnd', 512]]) {

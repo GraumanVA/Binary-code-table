@@ -7,22 +7,34 @@
   __EDITOR_STYLES__
 </head>
 <body>
-  <header><div class="shell topbar"><a class="brand" href="./index.html">A(n,d) Atlas</a><nav class="nav" aria-label="Editor navigation"><a href="./index.html">Back to table</a></nav></div></header>
+  <header><div class="shell topbar"><a class="brand" href="./index.html">A(n,d) Atlas</a><nav class="nav" aria-label="Editor navigation"><a id="editorBack" href="./index.html">Back to table</a></nav></div></header>
   <main class="shell editor-shell">
-    <section class="hero"><p>Make a draft here, then download the updated data files and commit them to the repository. Changes appear on the public table after its next successful build.</p></section>
+    <section class="hero"><h1>Update table data</h1><p>Draft a bound or citation, then review and download your changes.</p></section>
     <p id="editorStatus" class="editor-status" role="status">Loading data…</p>
     <button id="editorRetry" class="btn" hidden>Retry loading</button>
     <div id="editorContent" hidden>
       <div class="editor-grid">
         <section class="editor-section" aria-labelledby="boundsHeading">
           <div class="editor-heading"><h2 id="boundsHeading">Bounds</h2><button id="newClaim" class="text-button" type="button">New bound</button></div>
-          <label for="claimSelect">Recorded literature updates</label><select id="claimSelect" size="5" aria-label="Recorded literature updates"></select>
           <form id="claimForm">
             <div class="editor-row"><div><label for="claimN">Length n</label><input id="claimN" type="number" min="1" max="512" required value="17"></div><div><label for="claimD">Minimum distance d</label><input id="claimD" type="number" min="1" max="512" required value="3"></div></div>
             <p id="currentBound" class="editor-hint"></p>
-            <div class="editor-row"><div><label for="claimLower">Lower bound</label><input id="claimLower" type="text" inputmode="numeric" pattern="[1-9][0-9]*" maxlength="160" placeholder="Exact integer"></div><div><label for="claimUpper">Upper bound</label><input id="claimUpper" type="text" inputmode="numeric" pattern="[1-9][0-9]*" maxlength="160" placeholder="Exact integer"></div></div>
-            <label for="claimReferences">Supporting references</label><select id="claimReferences" multiple size="5" required></select><p class="editor-hint">Choose one or more references. Add a new paper in the References form.</p>
-            <label for="claimLocator">Location in source</label><input id="claimLocator" type="text" placeholder="Theorem, page, table, or construction">
+            <label for="claimSelect">Literature records</label><select id="claimSelect"></select>
+            <label class="editor-check"><input id="allClaims" type="checkbox"> Show records for all parameters</label>
+            <fieldset class="editor-evidence">
+              <legend>Lower bound</legend>
+              <label for="claimLower">Exact integer</label><input id="claimLower" type="text" inputmode="numeric" pattern="[1-9][0-9]*" maxlength="160">
+              <label for="lowerReferenceSearch">Find a reference for the lower bound</label><input id="lowerReferenceSearch" type="search">
+              <label for="lowerReferences">Lower-bound references</label><select id="lowerReferences" multiple size="4"></select>
+              <label for="lowerLocator">Location in the lower-bound source</label><input id="lowerLocator" type="text" placeholder="Theorem, page, table, or construction">
+            </fieldset>
+            <fieldset class="editor-evidence">
+              <legend>Upper bound</legend>
+              <label for="claimUpper">Exact integer</label><input id="claimUpper" type="text" inputmode="numeric" pattern="[1-9][0-9]*" maxlength="160">
+              <label for="upperReferenceSearch">Find a reference for the upper bound</label><input id="upperReferenceSearch" type="search">
+              <label for="upperReferences">Upper-bound references</label><select id="upperReferences" multiple size="4"></select>
+              <label for="upperLocator">Location in the upper-bound source</label><input id="upperLocator" type="text" placeholder="Theorem, page, table, or construction">
+            </fieldset>
             <label class="editor-check"><input id="claimActive" type="checkbox" checked> Include this record in the table</label>
             <button class="btn" type="submit">Save bound to draft</button><p id="claimFeedback" class="editor-feedback" role="status"></p>
           </form>
@@ -32,20 +44,22 @@
           <label for="referenceSearch">Find a reference</label><input id="referenceSearch" type="search" placeholder="Author, title, or year"><select id="referenceSelect" size="5" aria-label="Recorded references"></select>
           <form id="referenceForm">
             <label for="referenceAuthors">Author names, one per line</label><textarea id="referenceAuthors" rows="3" required placeholder="Names to display below the bound"></textarea>
-            <div class="editor-row"><div><label for="referenceYear">Year</label><input id="referenceYear" type="text" required placeholder="2026"></div><div><label for="referenceKind">Type</label><select id="referenceKind"><option value="paper">Paper</option><option value="book">Book</option><option value="thesis">Thesis</option><option value="email">Email</option><option value="personal communication">Personal communication</option></select></div></div>
+            <div class="editor-row"><div><label for="referenceYear">Year (if known)</label><input id="referenceYear" type="text" placeholder="2026"></div><div><label for="referenceKind">Type</label><select id="referenceKind"><option value="paper">Paper</option><option value="book">Book</option><option value="thesis">Thesis</option><option value="email">Email</option><option value="personal communication">Personal communication</option></select></div></div>
             <label for="referenceCitation">Full citation</label><textarea id="referenceCitation" rows="5" required placeholder="Full authors, title, journal or preprint, and publication details"></textarea>
             <label for="referenceURL">Source link</label><input id="referenceURL" type="url" placeholder="https://…">
             <button class="btn" type="submit">Save reference to draft</button><p id="referenceFeedback" class="editor-feedback" role="status"></p>
           </form>
+          <div class="editor-actions"><button id="useLowerReference" class="text-button" type="button" disabled>Use for lower bound</button><button id="useUpperReference" class="text-button" type="button" disabled>Use for upper bound</button></div>
         </section>
       </div>
       <section class="editor-section editor-downloads" aria-labelledby="downloadHeading">
-        <h2 id="downloadHeading">Save and publish your changes</h2>
-        <p>Drafts stay in this browser. Download the files below, replace their counterparts in the repository’s <code>data/</code> folder, and commit both files together. The included GitHub Actions workflow validates and publishes the update.</p>
-        <div class="editor-actions"><button id="downloadClaims" class="btn">Download bounds</button><button id="downloadReferences" class="btn">Download references</button><button id="downloadBundle" class="btn">Download update bundle</button></div>
+        <h2 id="downloadHeading">Review changes</h2>
+        <p id="emptyChanges">Your draft matches the published data.</p>
+        <ul id="draftChanges" class="editor-changes" aria-label="Draft changes" hidden></ul>
+        <div class="editor-actions"><button id="downloadBundle" class="btn">Download changes</button><button id="downloadPending" class="btn" hidden>Download unresolved draft</button></div>
         <details><summary>Import a saved update bundle</summary><label for="importBundle">Update bundle JSON file</label><input id="importBundle" type="file" accept="application/json,.json"></details>
-        <p class="editor-hint">An update bundle can also be applied locally with <code>python manage_coding_bounds.py apply filename.json</code>.</p>
-        <button id="resetDraft" class="text-button">Discard draft and reload published data</button>
+        <p class="editor-hint">Apply the bundle in the repository with <code>python -m atlas apply bounds-update.json</code>. Review the Git diff before committing.</p>
+        <button id="resetDraft" class="text-button">Discard drafts</button>
       </section>
     </div>
   </main>

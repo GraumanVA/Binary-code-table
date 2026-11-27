@@ -101,6 +101,17 @@ header {
   margin:8px 0 0;
   font-size:.875rem
 }
+.lookup {
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:8px;
+  margin:0 0 12px;
+  font-size:.875rem
+}
+.lookup label:not(:first-child) {
+  margin-left:4px
+}
 .toolbar {
   display:flex;
   align-items:center;
@@ -132,7 +143,7 @@ header {
   font-size:.875rem;
   font-weight:600
 }
-.range input {
+.range input,.lookup input {
   width:76px;
   min-height:38px;
   padding:5px 9px;
@@ -648,7 +659,7 @@ table.matrix {
   .range legend {
     margin-right:4px
   }
-  .range input {
+  .range input,.lookup input {
     width:62px
   }
   .toolbar-actions {

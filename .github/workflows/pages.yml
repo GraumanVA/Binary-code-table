@@ -28,7 +28,7 @@ jobs:
           node-version: '24'
           package-manager-cache: false
       - name: Build and validate data
-        run: python manage_coding_bounds.py build
+        run: python -m atlas build
       - name: Check importer and maintenance
         run: python -m unittest discover -s tests -p "test_*.py"
       - name: Check table and editor

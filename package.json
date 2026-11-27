@@ -2,12 +2,13 @@
   "name": "binary-code-bounds-atlas",
   "private": true,
   "version": "0.3.0",
-  "engines": { "node": ">=20" },
+  "engines": { "node": ">=24" },
   "scripts": {
-    "build": "python manage_coding_bounds.py build",
-    "serve": "python manage_coding_bounds.py serve",
-    "package": "python manage_coding_bounds.py package",
+    "build": "python -m atlas build",
+    "check": "python -m atlas check",
+    "serve": "python -m atlas serve",
+    "package": "python -m atlas package",
     "test": "node --test --test-concurrency=1 tests/*.test.cjs",
-    "test:python": "python -m unittest discover -s tests -p test_*.py"
+    "test:python": "python -m unittest discover -s tests -p \"test_*.py\""
   }
 }

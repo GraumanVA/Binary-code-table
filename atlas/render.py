@@ -2,10 +2,10 @@
 import hashlib
 import json
 from pathlib import Path
-from build_coding_bounds import build_dataset
 
-ROOT = Path(__file__).resolve().parent
-SOURCE = ROOT / 'src'
+from .paths import BUILD_DIR, ROOT, SITE_DIR, WEB_SOURCE_DIR as SOURCE
+from .dataset import build_dataset
+
 SCRIPTS = ['math.js', 'bounds.js', 'state.js', 'format.js', 'export.js', 'app.js', 'data.js', 'boot.js']
 WORKER_SCRIPTS = ['math.js', 'bounds.js', 'state.js', 'export.js', 'export-worker.js']
 
@@ -15,8 +15,8 @@ def embedded_json(value):
     return json.dumps(value, ensure_ascii=False).replace('<', chr(92) + 'u003c')
 
 
-def prepare_payload():
-    payload = build_dataset()
+def prepare_payload(dataset=None):
+    payload = dict(build_dataset() if dataset is None else dataset)
     payload['metadata'] = dict(payload['metadata'])
     payload['metadata'].pop('version', None)
     rules = '\n'.join((SOURCE / name).read_text(encoding='utf-8') for name in ['math.js', 'bounds.js'])
@@ -29,8 +29,8 @@ def worker_source():
     return '\n'.join((SOURCE / name).read_text(encoding='utf-8') for name in WORKER_SCRIPTS)
 
 
-def render():
-    payload = prepare_payload()
+def render(dataset):
+    payload = prepare_payload(dataset)
     template = (SOURCE / 'index.template.html').read_text(encoding='utf-8')
     scripts = []
     for name in SCRIPTS:
@@ -38,14 +38,15 @@ def render():
         if '</script' in code.lower():
             raise ValueError(f'Unsafe script terminator in {name}')
         scripts.append('<script>\n' + code + '\n</script>')
-    html = template.replace('href="./editor.html"', 'href="./dist/editor.html"').replace('__STYLES__', (SOURCE / 'styles.css').read_text(encoding='utf-8'))
+    html = template.replace('href="./editor.html"', 'href="../dist/editor.html"').replace('__STYLES__', (SOURCE / 'styles.css').read_text(encoding='utf-8'))
     html = html.replace('__SEED__', embedded_json(payload))
     html = html.replace('__WORKER__', '<script id="exportWorker" type="application/json">' + embedded_json(worker_source()) + '</script>')
     html = html.replace('__SCRIPTS__', '\n'.join(scripts))
     if any(token in html for token in ['__STYLES__', '__SEED__', '__WORKER__', '__SCRIPTS__']):
         raise ValueError('Unresolved template marker')
-    (ROOT / 'coding_bounds.html').write_text(html, encoding='utf-8')
-    destination = ROOT / 'dist'
+    BUILD_DIR.mkdir(exist_ok=True)
+    (BUILD_DIR / 'coding_bounds.html').write_text(html, encoding='utf-8')
+    destination = SITE_DIR
     if destination.resolve() != ROOT.resolve() / 'dist':
         raise ValueError('Publication output must stay inside the project dist directory')
     destination.mkdir(exist_ok=True)
@@ -101,7 +102,7 @@ def render():
     (destination / '.nojekyll').write_text('', encoding='utf-8')
     emitted.add('.nojekyll')
     release = dict(version=version, scope=payload['metadata']['scope'],
-                   source_dates={name: payload['metadata'][name]['date'] for name in ['litsyn', 'brouwer']},
+                   source_dates={name: payload['metadata'][name].get('date') for name in ['litsyn', 'brouwer', 'grassl']},
                    manifest=config['manifest'])
     (destination / 'release.json').write_text(json.dumps(release, indent=2) + '\n', encoding='utf-8')
     emitted.add('release.json')
@@ -112,7 +113,3 @@ def render():
             output.unlink()
     print(f"Built external-data dist/ and standalone edition ({version}).")
     return html
-
-
-if __name__ == '__main__':
-    render()

@@ -28,14 +28,22 @@ __STYLES__
 <p id="snapshotNotice" class="range-note" role="status" hidden>
 </p>
 <section class="hero" aria-labelledby="page-title">
-<p>Bounds on the largest binary code of length n and minimum Hamming distance at least d. Select a value to inspect its sources and derivation.</p>
-<p>The table supports lengths and distances up to 512. Source coverage varies by parameter. Updates and improvements are welcome.</p>
+<h1 id="page-title">Binary code bounds</h1>
+<p><i>A(n,d)</i> is the largest possible size of a binary code of length <i>n</i> and minimum Hamming distance at least <i>d</i>. Compare known bounds and open any cell to see its exact values, sources, and derivations.</p>
 <details class="coverage">
 <summary>Sources and coverage</summary>
 <p>The table combines the Litsyn–Rains–Sloane archived table, Brouwer’s small-code table (October 2026), Grassl’s binary linear-code constructions, cited literature updates, and elementary bounds.</p>
 </details>
 </section>
 <section id="browse" aria-label="Browse parameter bounds">
+<form id="lookup" class="lookup" aria-label="Find a table entry">
+<label for="lookupN">Length <i>n</i></label>
+<input id="lookupN" type="number" min="1" max="512" step="1" required aria-describedby="lookupNote">
+<label for="lookupD">Distance <i>d</i></label>
+<input id="lookupD" type="number" min="1" max="512" step="1" required aria-describedby="lookupNote">
+<button id="lookupSubmit" class="btn" type="submit">Go to entry</button>
+</form>
+<p id="lookupNote" class="range-note" role="status" hidden></p>
 <div class="toolbar" aria-label="Table controls">
 <div class="ranges">
 <fieldset class="range">
@@ -52,7 +60,7 @@ __STYLES__
 <input id="dStart" aria-describedby="rangeNote" type="number" min="1" max="512" step="1" value="3">
 <span aria-hidden="true">–</span>
 <label class="sr-only" for="dEnd">Distance to</label>
-<input id="dEnd" aria-describedby="rangeNote" type="number" min="1" max="512" step="1" value="15">
+<input id="dEnd" aria-describedby="rangeNote" type="number" min="1" max="512" step="1" value="19">
 </fieldset>
 </div>
 <div class="toolbar-actions">
@@ -74,7 +82,9 @@ __STYLES__
 <label>
 <input id="brouwer" type="checkbox" checked> Brouwer 2026</label>
 <label>
-<input id="literature" type="checkbox" checked> Literature and CodeTables</label>
+<input id="grassl" type="checkbox" checked> Grassl CodeTables</label>
+<label>
+<input id="literature" type="checkbox" checked> Literature updates</label>
 <label>
 <input id="theorems" type="checkbox" checked> Elementary bounds</label>
 </fieldset>
@@ -112,7 +122,7 @@ __STYLES__
 <section class="below">
 <article class="info" id="methods">
 <h2>Methods</h2>
-<p>The table shows the strongest bounds among the enabled sources and their documented parity and shortening consequences.</p>
+<p>The table supports lengths and distances up to 512. It shows the strongest available bounds from the enabled sources, including the derivations described below.</p>
 <details>
 <summary>How bounds are calculated</summary>
 <ul>
@@ -120,6 +130,8 @@ __STYLES__
 <strong>Archive rows:</strong> The format <span class="code-inline">n d k N Type Ref</span> gives <span class="code-inline">A(n,d) ≥ N·2^k</span>.</li>
 <li>
 <strong>Missing lengths:</strong> Shorten from the next eligible archived length, rounding the resulting lower bound upward to an integer.</li>
+<li>
+<strong>Padding:</strong> Appending zero coordinates increases the length and preserves the size and minimum distance of a code.</li>
 <li>
 <strong>Parity:</strong> <span class="code-inline">A(n,2t−1) = A(n+1,2t)</span> relates odd and even distances. The table shows only odd distances by default to avoid duplication. Even-distance source bounds still contribute to their equivalent odd-distance entries.</li>
 <li>
@@ -131,6 +143,7 @@ __STYLES__
 <article class="info" id="sources">
 <h2>Sources</h2>
 <p><strong>Markus Grassl.</strong> <a href="https://www.codetables.de/BKLC/index.html" target="_blank" rel="noopener noreferrer">Bounds on the minimum distance of linear codes</a>. Each imported binary linear code of dimension <i>k</i> gives a lower bound of 2<sup><i>k</i></sup> codewords.</p>
+<p id="grasslCoverage" hidden></p>
 <p>
 <strong>Litsyn–Rains–Sloane, 1999.</strong> <em>Table of Nonlinear Binary Codes</em>. 1,014 archived source rows, lengths up to 512, and 108 bibliography entries.</p>
 <p>
@@ -145,9 +158,7 @@ __STYLES__
 <section>
 <article class="info" id="updates">
 <h2>Updates</h2>
-<p>
-News of table improvements will be posted here.
-</p>
+<p>Grassl’s binary linear-code constructions add lower bounds and links to the underlying codes. At <a href="#A-30-19"><i>A</i>(30,19)</a>, the four-word construction meets the upper bound.</p>
 </article>
 </section>
 

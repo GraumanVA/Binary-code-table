@@ -1,7 +1,7 @@
 """Import the supplied archive using only Python's standard library."""
 import re
 from html.parser import HTMLParser
-from coding_bounds_attribution import clean_citation, strip_latex_comments
+from .attribution import clean_citation, strip_latex_comments
 
 
 class ArchiveParser(HTMLParser):
