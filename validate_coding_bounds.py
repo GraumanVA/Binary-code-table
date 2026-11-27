@@ -49,6 +49,7 @@ for r in eligible: by_d[r['d']].append(r)
 for group in by_d.values(): group.sort(key=lambda r:r['n'])
 by_b={(r['n'],r['d']):r for r in B}
 by_l={(r['n'],r['d']):r for r in eligible}
+by_g={(r['n'],r['d']):dict(r,id=f"GRASSL-{r['n']}-{r['d']}") for r in DB['grassl']}
 
 def imported_at(n,d):
     claims=[]
@@ -66,6 +67,9 @@ def imported_at(n,d):
         r=by_b[origin_n,origin_d]
         claims.append(('Brouwer',int(r['lower']),int(r['upper']),r))
     target=(n,d) if d%2 else (n-1,d-1)
+    if target in by_g:
+        r=by_g[target]
+        claims.append(('Grassl',2**r['k'],None,r))
     for r in literature:
         pair=(r['n'],r['d']) if r['d']%2 else (r['n']-1,r['d']-1)
         if r.get('active') is not False and pair==target:
@@ -144,6 +148,7 @@ lines=[
     f'Excluded erroneous archive rows: {len(excluded)}',
     f'Eligible Litsyn source rows: {len(eligible)}',
     f'Brouwer table cells: {len(B)}',
+    f'Imported Grassl lower bounds, counted once per parity pair: {len(by_g)}',
     f'Active literature updates: {sum(r.get("active") is not False for r in literature)}',
     f'Active bibliography keys: {len(DB["bibliography"])}',
     f'Bibliography entries with author labels: {sum(bool(citations[key]["authors"]) for key in ref_keys)}',

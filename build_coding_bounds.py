@@ -3,13 +3,14 @@ import csv
 import json
 from pathlib import Path
 from coding_bounds_attribution import enrich_attribution
+from coding_bounds_grassl import add_attribution, load_improvements
 from coding_bounds_import import parse_archive, parse_bibliography
 from coding_bounds_claims import validate_literature_claims, validate_literature_consistency
 
 ROOT = Path(__file__).resolve().parent
 
 
-def build_dataset(*, citations=None, literature_claims=None):
+def build_dataset(*, citations=None, literature_claims=None, include_grassl=True):
     dataset = json.loads((ROOT / 'data/snapshot.json').read_text(encoding='utf-8'))
     dataset['litsyn'] = parse_archive((ROOT / 'index.html').read_text(encoding='utf-8'))
     dataset['bibliography'] = parse_bibliography((ROOT / 'refs.html').read_text(encoding='utf-8'))
@@ -22,6 +23,12 @@ def build_dataset(*, citations=None, literature_claims=None):
     records = literature_claims if literature_claims is not None else json.loads((ROOT / 'data/literature_claims.json').read_text(encoding='utf-8'))
     dataset['literature_claims'] = validate_literature_claims(records, dataset['citation_metadata'])
     validate_literature_consistency(dataset)
+    if include_grassl:
+        reference = dataset['metadata']['grassl']['reference_id']
+        if reference not in dataset['citation_metadata']:
+            raise ValueError(f'Unknown Grassl reference: {reference}')
+        dataset['grassl'] = load_improvements(ROOT / 'data/grassl_improvements.csv', dataset)
+        add_attribution(dataset['grassl'], ROOT / 'data/grassl_references.json', dataset['citation_metadata'])
     return dataset
 
 

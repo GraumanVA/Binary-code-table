@@ -8,6 +8,7 @@
     const eligible = data.litsyn.filter(row => !excluded.has(row.id));
     const litsyn = new Map(eligible.map(row => [`${row.n},${row.d}`, row]));
     const brouwer = new Map(data.brouwer.map(row => [`${row.n},${row.d}`, row]));
+    const grassl = new Map((data.grassl || []).map(row => [`${row.n},${row.d}`, row]));
     const byDistance = new Map();
     for (const row of eligible) {
       if (!byDistance.has(row.d)) byDistance.set(row.d, []);
@@ -49,7 +50,14 @@
       if (settings.theorems) claims.push(calculator.elementaryBound(n, d));
       if (settings.literature !== false) {
         const pair = math.oddPartner(n, d);
-        for (const row of literature.get(`${pair.n},${pair.d}`) || []) {
+        const key = `${pair.n},${pair.d}`;
+        const witness = grassl.get(key);
+        if (witness) {
+          const originN = witness.code_n, originD = pair.d + originN - pair.n;
+          claims.push({ source: 'G', originN, originD, lower: 2n ** BigInt(witness.k), upper: null,
+            record: witness, parity: n !== originN || d !== originD });
+        }
+        for (const row of literature.get(key) || []) {
           claims.push({ source: 'P', originN: row.n, originD: row.d,
             lower: row.lower == null ? null : BigInt(row.lower),
             upper: row.upper == null ? null : BigInt(row.upper), record: row,

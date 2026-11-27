@@ -18,6 +18,9 @@
     function referenceIds(claim, side) {
       if (claim.source === 'L') return claim.record.refs || [];
       if (claim.source === 'B') return data.bound_references[claim.record.id]?.[side] || [];
+      if (claim.source === 'G' && side === 'lower') {
+        return claim.record.references || [data.metadata.grassl.reference_id];
+      }
       if (claim.source === 'P' && claim[side] != null) return claim.record.references || [];
       return [];
     }
@@ -134,19 +137,24 @@
           ${esc(data.citation_metadata[key]?.citation || 'Not found in uploaded bibliography')}</span>`)
           .join('<br>') || 'No bibliography tag on archived row.';
       }
+      const constructionURL = claim.source === 'G'
+        ? `https://www.codetables.de/BKLC/BKLC.php?q=2&n=${claim.record.code_n}&k=${claim.record.k}` : '';
       const citeSide = (side, label) => {
         if (claim[side] == null) return '';
         const keys = referenceIds(claim, side);
         const references = keys.length ? keys.map(key => {
           const reference = data.citation_metadata[key];
-          const link = reference.url
-            ? ` <a href="${esc(reference.url)}" target="_blank" rel="noopener noreferrer">Source</a>` : '';
+          const url = claim.source === 'G' && key === data.metadata.grassl.reference_id ? '' : reference.url;
+          const link = url && url !== constructionURL
+            ? ` <a href="${esc(url)}" target="_blank" rel="noopener noreferrer">Source</a>` : '';
           return esc(reference.citation) + link;
         }).join('<br>') : 'Original paper not identified in the imported notes.';
         return `<p><strong>${label}:</strong> ${references}</p>`;
       };
-      const compilation = claim.source === 'B'
-        ? '<a target="_blank" rel="noopener noreferrer" href="https://aeb.win.tue.nl/codes/binary-1.html">Brouwer’s table and improvement notes</a>' : '';
+      const compilation = constructionURL
+        ? `<a href="${esc(constructionURL)}" target="_blank" rel="noopener noreferrer">CodeTables construction</a>`
+        : claim.source === 'B'
+          ? '<a target="_blank" rel="noopener noreferrer" href="https://aeb.win.tue.nl/codes/binary-1.html">Brouwer’s table and improvement notes</a>' : '';
       return citeSide('lower', 'Lower bound') + citeSide('upper', 'Upper bound') + compilation;
     }
 
@@ -169,13 +177,19 @@
         derivations.push(`Shorten from length ${claim.originN} to ${claim.originN-claim.steps}
           (${claim.steps} coordinates). Derived lower bound ${value}.`);
       }
+      if (claim.source === 'G') {
+        if (claim.record.reference_note) derivations.push(claim.record.reference_note);
+        if (claim.parity) derivations.push('Transfer this lower bound to the selected parameters by the odd/even parity identity.');
+      }
       const type = claim.record.type;
       const typeName = data.code_types[type] ? ` (${esc(data.code_types[type])})` : '';
       const provenance = archived
         ? `Imported via the Litsyn–Rains–Sloane archive (1999). Row: k=${claim.record.k}, N=${esc(claim.record.N)}, type ${esc(type)}${typeName}.`
-        : claim.source === 'P'
-          ? `Literature record ${esc(claim.record.id)}${claim.record.source_locator ? ': '+esc(claim.record.source_locator) : ''}.`
-          : 'Imported via Brouwer’s table (2026); paper and communication credits are listed below.';
+        : claim.source === 'G'
+          ? `Binary linear code [${esc(claim.record.code_n)}, ${esc(claim.record.k)}, ${esc(claim.record.code_d)}] with 2<sup>${esc(claim.record.k)}</sup> codewords.`
+          : claim.source === 'P'
+            ? `Literature record ${esc(claim.record.id)}${claim.record.source_locator ? ': '+esc(claim.record.source_locator) : ''}.`
+            : 'Imported via Brouwer’s table (2026); paper and communication credits are listed below.';
       const exact = archived
         ? (lower !== esc(exactVal(original)) ? exactIntegers([['Archived lower bound', original]]) : '')
         : numberDetails(lower, upper, claim.lower, claim.upper);

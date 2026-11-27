@@ -9,6 +9,8 @@ The maintained website reads bounds and references from separate JSON files. Edi
 | `data/literature_claims.json` | Add lower/upper bounds from new papers or communications.                              |
 | `data/citations.json`         | Authors, year, full citation, and optional source link.                                |
 | `data/brouwer_snapshot.csv`   | The manually imported Brouwer slice; edit only when reviewing a newer source snapshot. |
+| `data/grassl_improvements.csv` | Binary linear-code witnesses from Grassl's CodeTables. |
+| `data/grassl_references.json` | Reviewed publication and contributor credits, keyed by the witness triple `[code_n, k, code_d]`. |
 | `data/bound_references.json`  | Match a specific imported bound value to its reference.                                |
 | `data/snapshot.json`          | Source dates, archive exclusions, and construction-type descriptions.                  |
 
@@ -53,7 +55,7 @@ The editor preserves archive citation fingerprints and historical records. Corre
    
    Supply `lower`, `upper`, or both. Store bounds as exact decimal **strings**, so long integers keep all their digits. Parameters must be whole numbers from 1 to 512. Each `PAPER-...` ID must be unique, and all reference keys must exist in `data/citations.json`.
    
-   Bounds are transferred automatically between parity-equivalent pairs. The table selects the strongest enabled lower and upper bounds, retains author credits, and includes the update in CSV export. The **Literature updates** option controls this layer.
+   Bounds are transferred automatically between parity-equivalent pairs. The table selects the strongest enabled lower and upper bounds, retains author credits, and includes the update in CSV export. The **Literature and CodeTables** option controls these sources.
 
 3. Rebuild and validate:
    
@@ -78,6 +80,10 @@ The editor preserves archive citation fingerprints and historical records. Corre
 Correct author/year/citation display fields in `data/citations.json`. Raw archive text remains preserved. To withdraw a literature record, set `"active": false`; its history stays in the data, but it no longer contributes to bounds. An imported archive error can be listed under `editorial_exclusions` in `data/snapshot.json`.
 
 When revising an imported Brouwer value, update the matching value/reference entry in `data/bound_references.json`. Reference assignments are value-matched, so an old citation will not silently attach to a replacement number. Expanding the original imported slice also requires updating its snapshot-specific validation expectations; new literature records do not have that restriction within the supported 1–512 parameter range.
+
+To refresh Grassl's import, save the complete binary table from [CodeTables.de](https://www.codetables.de/BKLC/index.html) and run `python coding_bounds_grassl.py saved-table.html`, then rebuild. The importer compares construction-backed distances against the other enabled sources and stores one witness per improved odd/even pair. The build checks the stored witnesses against the current upper bounds.
+
+Add specific Grassl construction credits to `data/grassl_references.json`. Each group lists `references` from `data/citations.json`, the exact witness triples under `codes`, and an optional `note` explaining the connection. The build also credits published Cordaro–Wagner, Solomon–Stiffler, and BCH constructions when their parameters suffice. Each bound keeps its CodeTables construction link.
 
 ## Published layout
 

@@ -22,7 +22,9 @@
     }
     if (!Array.isArray(bounds.litsyn) || !Array.isArray(bounds.brouwer)
         || !Array.isArray(bounds.literature_claims) || !Array.isArray(bounds.editorial_exclusions)
-        || !references.citation_metadata || !references.bound_references || !references.bibliography) {
+        || !references.citation_metadata || !references.bound_references || !references.bibliography
+        || (manifest.metadata.grassl && (!Array.isArray(bounds.grassl)
+          || !references.citation_metadata[manifest.metadata.grassl.reference_id]))) {
       throw new Error('Incomplete dataset.');
     }
     const { version: _boundsVersion, ...claimData } = bounds;

@@ -109,7 +109,7 @@
       const upper = boundNumber(result.U, upperClaims, 'upper');
       const compact = lower !== esc(exactVal(result.L)) || upper !== esc(exactVal(result.U));
       const exact = compact ? exactIntegers([['Lower bound', result.L], ['Upper bound', result.U]]) : '';
-      const order = { P: 0, B: 1, L: 2, T: 3 };
+      const order = { P: 0, G: 1, B: 2, L: 3, T: 4 };
       const notes = result.cs.length
         ? result.cs.slice().sort((a, b) => order[a.source] - order[b.source]).map(displayClaim).join('')
         : '<div class="norecord">No bound is available from the enabled sources.</div>';

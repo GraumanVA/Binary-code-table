@@ -27,6 +27,10 @@
       }
     }
     const required = new Set(dataset.litsyn.flatMap(row => row.refs || []));
+    if (dataset.grassl?.length) required.add(dataset.metadata.grassl.reference_id);
+    for (const row of dataset.grassl || []) {
+      for (const key of row.references || []) required.add(key);
+    }
     for (const sides of Object.values(dataset.bound_references)) {
       for (const keys of Object.values(sides)) for (const key of keys) required.add(key);
     }

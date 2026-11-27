@@ -69,7 +69,7 @@ def render():
     script_urls = [publish_asset(name, (SOURCE / name).read_text(encoding='utf-8')) for name in SCRIPTS]
     worker_url = publish_asset('export-worker.bundle.js', worker_source())
     version = payload['metadata']['version']
-    bounds = {key: payload[key] for key in ['litsyn', 'brouwer', 'literature_claims', 'editorial_exclusions', 'code_types']}
+    bounds = {key: payload[key] for key in ['litsyn', 'brouwer', 'grassl', 'literature_claims', 'editorial_exclusions', 'code_types']}
     references = {key: payload[key] for key in ['bibliography', 'citation_metadata', 'bound_references']}
     filenames = {'bounds': f'bounds.{version}.json', 'references': f'references.{version}.json'}
     for key, contents in [('bounds', bounds), ('references', references)]:

@@ -29,7 +29,7 @@ test('external HTML contains no dataset and its data files reproduce the portabl
   assert(page.length < 15000);
   const data = await loadDataset('https://bounds.example/data/manifest.json', diskFetch());
   const portable = mount();
-  for (const key of ['metadata', 'litsyn', 'brouwer', 'literature_claims', 'citation_metadata', 'bound_references']) {
+  for (const key of ['metadata', 'litsyn', 'brouwer', 'grassl', 'literature_claims', 'citation_metadata', 'bound_references']) {
     assert.deepEqual(data[key], portable.data[key]);
   }
   assert.equal(createEngine(data).calculate(17, 3).L, 6144n);

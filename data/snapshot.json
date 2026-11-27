@@ -13,6 +13,9 @@
       "date": "2026-10-21",
       "records": 161,
       "url": "https://aeb.win.tue.nl/codes/binary-1.html"
+    },
+    "grassl": {
+      "reference_id": "grassl-codetables"
     }
   },
   "editorial_exclusions": [

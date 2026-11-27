@@ -42,6 +42,37 @@ test('parity closure works with every combination of enabled sources', () => {
     { n: 33, d: 20, rule: 'Plotkin bound' });
 });
 
+test('Grassl improves the lower bound on both sides of parity and credits the construction', () => {
+  const engine = createEngine(data);
+  const baseline = createEngine({ ...data, grassl: [] });
+  for (const [n, d, lower] of [[30, 19, 4n], [40, 13, 8192n], [256, 169, 4n]]) {
+    for (const [length, distance] of [[n, d], [n + 1, d + 1]]) {
+      const result = engine.calculate(length, distance);
+      const previous = baseline.calculate(length, distance);
+      assert.equal(result.L, lower);
+      assert(result.L > previous.L);
+      assert.equal(result.U, previous.U);
+    }
+  }
+  const disabled = { litsyn: true, brouwer: true, theorems: true, literature: false };
+  assert.equal(engine.calculate(30, 19, disabled).L, 2n);
+  const witness = engine.calculate(31, 20).cs.find(claim => claim.source === 'G');
+  const format = createFormatters(data);
+  assert.equal(format.boundAttributions([witness], 'lower'), 'Cordaro and Wagner (1967)');
+  const details = format.displayClaim(witness);
+  assert(details.includes('[30, 2, 20]'));
+  assert(details.includes('q=2&amp;n=30&amp;k=2'));
+  assert(details.includes('10.1109/TIT.1967.1053987'));
+  assert(details.includes('odd/even parity identity'));
+
+  const kurz = engine.calculate(45, 19).cs.find(claim => claim.source === 'G');
+  assert.equal(format.boundAttributions([kurz], 'lower'), 'Kurz (2021)');
+  const kurzDetails = format.displayClaim(kurz);
+  assert(kurzDetails.includes('https://doi.org/10.3934/amc.2020074'));
+  assert(kurzDetails.includes('q=2&amp;n=45&amp;k=9'));
+  assert(kurzDetails.includes('Puncturing the [46,9,20] code'));
+});
+
 test('exact arithmetic retains Johnson, perfect-code and boundary results', () => {
   const math = createCalculator();
   assert.equal(math.johnsonBound(13, 5).upper, 77n);

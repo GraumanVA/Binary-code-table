@@ -3,7 +3,8 @@
   'use strict';
   const state = root.AtlasState || require('./state.js');
   const sourceLabel = claim => claim.source === 'L' ? 'Litsyn 1999'
-    : claim.source === 'B' ? 'Brouwer 2026' : claim.source === 'P' ? 'Literature update' : 'Standard theorem';
+    : claim.source === 'B' ? 'Brouwer 2026' : claim.source === 'G' ? 'Grassl CodeTables'
+    : claim.source === 'P' ? 'Literature update' : 'Standard theorem';
   const csvRow = values => values.map(value => `"${String(value).replace(/"/g, '""')}"`).join(',');
 
   async function generateCSV(engine, settings, options = {}) {

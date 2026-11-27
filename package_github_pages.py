@@ -9,7 +9,7 @@ SOURCE_FILES = [
     'index.html', 'refs.html', 'build_coding_bounds.py', 'manage_coding_bounds.py',
     'render_coding_bounds.py', 'serve_coding_bounds.py', 'validate_coding_bounds.py',
     'coding_bounds_import.py', 'coding_bounds_attribution.py', 'coding_bounds_claims.py',
-    'coding_bounds_math.py', 'coding_bounds_updates.py', 'package_github_pages.py',
+    'coding_bounds_grassl.py', 'coding_bounds_math.py', 'coding_bounds_updates.py', 'package_github_pages.py',
 ]
 SOURCE_FOLDERS = ['src', 'data', 'tests', '.github']
 

@@ -94,6 +94,7 @@ class PackageTests(unittest.TestCase):
             names = archive.namelist()
             for required in ['README.md', 'PUBLISHING.md', 'index.html', 'refs.html',
                              'render_coding_bounds.py', 'coding_bounds_updates.py', 'data/citations.json',
+                             'coding_bounds_grassl.py', 'data/grassl_improvements.csv', 'data/grassl_references.json',
                              'data/literature_claims.json', 'src/editor.js', '.github/workflows/pages.yml']:
                 self.assertIn(required, names)
             self.assertFalse(any('__pycache__' in name or name.startswith(('dist/', 'release/')) or 'preview' in name for name in names))
